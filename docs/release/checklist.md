@@ -10,9 +10,9 @@
 - [x] Root documentation is current-product documentation.
 - [x] Experimental surfaces are explicitly marked.
 - [x] Package README files exist.
-- [ ] Real repository/homepage/bugs metadata stamped after GitHub repository creation.
+- [x] Real repository/homepage/bugs metadata stamped after GitHub repository creation.
 - [x] `package-lock.json` generated in a networked Node 24 environment.
-- [ ] `package-lock.json` committed after this source archive is attached to Git.
+- [x] `package-lock.json` committed after this source archive is attached to Git.
 
 ## Version and package metadata
 
@@ -67,10 +67,10 @@ Current final-environment status:
 
 ## Publish
 
-- [ ] source attached to a Git repository and working tree clean;
-- [ ] exact release commit identified;
+- [x] source attached to `guyuedumingx/uair-framework` and working tree clean;
+- [x] exact release commit identified (`v0.67.0`);
 - [ ] npm identity/auth/provenance configured;
 - [ ] packages published in `release:plan` order;
-- [ ] Git tag created;
-- [ ] GitHub Release created;
+- [x] Git tag created;
+- [x] GitHub Release created;
 - [ ] fresh external `create-uair` smoke test passes.

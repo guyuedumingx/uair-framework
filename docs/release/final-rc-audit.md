@@ -6,8 +6,11 @@
 Source tree:
 READY
 
-Public GitHub/npm publication:
-WAITING FOR FINAL RELEASE ENVIRONMENT
+Public GitHub source publication:
+COMPLETE
+
+Public npm publication:
+WAITING FOR NPM RELEASE AUTHORITY
 ```
 
 ## Source checks
@@ -139,15 +142,15 @@ authority and does not replace that protocol test.
 
 ## Intentionally unresolved before public publication
 
-One source/publication identity prerequisite remains in this archive:
+The repository identity prerequisite has been resolved:
 
 ```text
-1. repository/homepage/bugs metadata
+1. repository/homepage/bugs metadata — RESOLVED for `guyuedumingx/uair-framework`
 ```
 
 It requires the final GitHub repository identity.
 
-Resolve with:
+The metadata was stamped with:
 
 ```bash
 UAIR_REPOSITORY_URL=https://github.com/ORG/REPO.git \
@@ -156,7 +159,8 @@ npm run release:metadata
 npm run release:plan
 ```
 
-`release:plan` must then return zero issues.
+`release:plan` returns zero issues. npm publication remains separate and still
+requires npm identity, provenance, and final authorization.
 
 ## Deferred environment evidence
 

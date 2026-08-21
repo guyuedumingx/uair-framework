@@ -6,8 +6,11 @@
 Source Release Candidate:
 READY
 
-GitHub/npm public release:
-BLOCKED BY REPOSITORY IDENTITY + GIT/NPM RELEASE AUTHORITY + REMAINING EXTERNAL GATES
+GitHub source release:
+PUBLISHED at `guyuedumingx/uair-framework` (`v0.67.0`)
+
+npm public release:
+BLOCKED BY NPM RELEASE AUTHORITY + REMAINING EXTERNAL GATES
 
 Production-grade 1.0:
 NOT YET
@@ -38,11 +41,15 @@ release metadata stamping
 final release checklist
 ```
 
-## Intentionally unresolved repository identity
+## Repository identity
 
-UAIR does not embed fake GitHub URLs.
+The real repository identity is stamped:
 
-Once the real repository exists:
+```text
+https://github.com/guyuedumingx/uair-framework.git
+```
+
+The original release-candidate command was:
 
 ```bash
 UAIR_REPOSITORY_URL=https://github.com/ORG/REPO.git \
