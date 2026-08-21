@@ -1,0 +1,13 @@
+{
+  "name": "uair-example-enterprise",
+  "version": "0.67.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@uair/core": "0.67.0",
+    "@uair/agent": "0.67.0",
+    "@uair/security": "0.67.0",
+    "@uair/oa": "0.67.0"
+  },
+  "license": "MIT"
+}

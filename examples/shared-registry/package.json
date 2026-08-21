@@ -1,0 +1,12 @@
+{
+  "name": "uair-example-shared-registry",
+  "version": "0.67.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@uair/core": "0.67.0",
+    "@uair/sqlite": "0.67.0",
+    "@uair/postgres": "0.67.0"
+  },
+  "license": "MIT"
+}

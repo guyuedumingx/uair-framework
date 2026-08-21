@@ -1,0 +1,37 @@
+{
+  "name": "@uair/ops",
+  "version": "0.67.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "dependencies": {
+    "@uair/core": "0.67.0"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "MIT",
+  "description": "Optional UAIR host operability helpers: health/readiness, drain, dead-letter recovery and error classification.",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guyuedumingx/uair-framework.git",
+    "directory": "packages/ops"
+  },
+  "homepage": "https://github.com/guyuedumingx/uair-framework#readme",
+  "bugs": {
+    "url": "https://github.com/guyuedumingx/uair-framework/issues"
+  }
+}

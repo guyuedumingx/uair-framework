@@ -1,0 +1,12 @@
+{
+  "name": "uair-example-conversational-agent",
+  "version": "0.67.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@uair/core": "0.67.0",
+    "@uair/ui": "0.67.0",
+    "@uair/package": "0.67.0",
+    "@uair/forge": "0.67.0"
+  }
+}

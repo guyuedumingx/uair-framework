@@ -1,0 +1,41 @@
+{
+  "name": "create-uair",
+  "version": "0.67.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "templates"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "create-uair": "./dist/index.js"
+  },
+  "description": "Scaffold a minimal UAIR application.",
+  "keywords": [
+    "uair",
+    "ai",
+    "agent",
+    "workflow",
+    "durable-execution"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guyuedumingx/uair-framework.git",
+    "directory": "packages/create-uair"
+  },
+  "homepage": "https://github.com/guyuedumingx/uair-framework#readme",
+  "bugs": {
+    "url": "https://github.com/guyuedumingx/uair-framework/issues"
+  }
+}

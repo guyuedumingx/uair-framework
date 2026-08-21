@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>UAIR Playground</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">UAIR v0.18 Playground</div>
+        <h1>Durable AI Workflow</h1>
+        <p>固定流程 + 动态 Agent + 阻塞 UI + 可恢复 History</p>
+      </div>
+      <div id="statusPill" class="status idle">IDLE</div>
+    </header>
+
+    <section class="composer panel">
+      <label>
+        <span>任务</span>
+        <textarea id="taskInput">Review this expense report and prepare a manager-ready summary</textarea>
+      </label>
+      <button id="startButton" class="primary">启动 Workflow</button>
+    </section>
+
+    <section class="workspace">
+      <section class="panel timeline-panel">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Execution Inspector</div>
+            <h2>执行树</h2>
+          </div>
+          <code id="executionId">—</code>
+        </div>
+        <div class="inspector-grid">
+          <div id="timeline" class="timeline empty">
+            启动一个 Workflow 后，这里会显示从 durable history 自动还原的执行树。
+          </div>
+          <div id="nodeDetail" class="node-detail empty">
+            点击一个节点查看 effectId、generation、retry、input/output 等细节。
+          </div>
+        </div>
+        <div class="gantt-wrap">
+          <div class="gantt-head">
+            <span>Execution Timeline</span>
+            <span id="timelineScale">—</span>
+          </div>
+          <div id="gantt" class="gantt empty">暂无时间数据。</div>
+        </div>
+      </section>
+
+      <section class="panel interaction-panel">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Interaction</div>
+            <h2>当前 UI / Result</h2>
+          </div>
+        </div>
+        <div id="interaction" class="interaction empty">
+          当前没有等待中的交互。
+        </div>
+      </section>
+    </section>
+
+    <section class="panel history-panel">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Durable State</div>
+          <h2>原始 History</h2>
+        </div>
+        <button id="refreshButton" class="secondary">刷新</button>
+      </div>
+      <pre id="history">{}</pre>
+    </section>
+  </main>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

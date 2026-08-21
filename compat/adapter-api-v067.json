@@ -1,0 +1,61 @@
+{
+  "@uair/mcp": [
+    "McpServerAdapter",
+    "mcp",
+    "connectMcpHttp",
+    "connectMcpStdio",
+    "defaultMcpHttpConnectionPolicy",
+    "allowListedMcpStdioPolicy",
+    "McpConnectionDeniedError"
+  ],
+  "@uair/security": [
+    "createRbac",
+    "staticTrustPolicy",
+    "bindCapabilities",
+    "SensitiveDataGuardStorage",
+    "secretRef",
+    "redactRecord",
+    "verifiedPackageInstaller",
+    "TenantStorage"
+  ],
+  "@uair/package": [
+    "CapabilitySet",
+    "CapabilityResolver",
+    "capability",
+    "acquirePackage",
+    "loadUairPackage",
+    "loadInstalledUairPackage"
+  ],
+  "@uair/sqlite": [
+    "SqliteRuntimeState",
+    "SqliteReliableWorkerQueue",
+    "SqliteWorkerRegistry"
+  ],
+  "@uair/postgres": [
+    "PostgresRuntimeState",
+    "PostgresReliableWorkerQueue",
+    "PostgresWorkerRegistry"
+  ],
+  "@uair/interaction": [
+    "interaction",
+    "InteractionService"
+  ],
+  "@uair/agent": [
+    "agent",
+    "externalAgent",
+    "durableWorkflowTool"
+  ],
+  "@uair/otel": [
+    "executionToSpans",
+    "exportExecution"
+  ],
+  "@uair/ops": [
+    "classifyError",
+    "healthReport",
+    "storageHealthCheck",
+    "workerRegistryHealthCheck",
+    "drainWorker",
+    "recoverDeadLetter",
+    "collectRuntimeMetrics"
+  ]
+}

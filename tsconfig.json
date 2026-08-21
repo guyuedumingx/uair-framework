@@ -1,0 +1,101 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "packages/core"
+    },
+    {
+      "path": "packages/sqlite"
+    },
+    {
+      "path": "packages/mcp"
+    },
+    {
+      "path": "packages/ui"
+    },
+    {
+      "path": "packages/agent"
+    },
+    {
+      "path": "packages/security"
+    },
+    {
+      "path": "packages/sandbox"
+    },
+    {
+      "path": "packages/package"
+    },
+    {
+      "path": "packages/oa"
+    },
+    {
+      "path": "packages/create-uair"
+    },
+    {
+      "path": "examples/basic"
+    },
+    {
+      "path": "examples/enterprise"
+    },
+    {
+      "path": "examples/playground"
+    },
+    {
+      "path": "packages/otel"
+    },
+    {
+      "path": "examples/versioning"
+    },
+    {
+      "path": "examples/routing"
+    },
+    {
+      "path": "examples/reliable-queue"
+    },
+    {
+      "path": "packages/postgres"
+    },
+    {
+      "path": "examples/job-queue-spi"
+    },
+    {
+      "path": "examples/shared-registry"
+    },
+    {
+      "path": "examples/capacity-reservation"
+    },
+    {
+      "path": "examples/chaos-harness"
+    },
+    {
+      "path": "examples/process-crash-harness"
+    },
+    {
+      "path": "examples/oa-showcase"
+    },
+    {
+      "path": "packages/forge"
+    },
+    {
+      "path": "examples/conversational-agent"
+    },
+    {
+      "path": "packages/builder"
+    },
+    {
+      "path": "examples/builder-showcase"
+    },
+    {
+      "path": "packages/cli"
+    },
+    {
+      "path": "packages/interaction"
+    },
+    {
+      "path": "examples/interaction-oa-server"
+    },
+    {
+      "path": "packages/ops"
+    }
+  ]
+}

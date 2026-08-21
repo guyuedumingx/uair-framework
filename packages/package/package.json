@@ -1,0 +1,45 @@
+{
+  "name": "@uair/package",
+  "version": "0.67.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@uair/core": "0.67.0",
+    "@uair/agent": "0.67.0",
+    "@uair/mcp": "0.67.0"
+  },
+  "description": "Capability discovery, package contracts, and resolver utilities for UAIR.",
+  "keywords": [
+    "uair",
+    "ai",
+    "agent",
+    "workflow",
+    "durable-execution"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guyuedumingx/uair-framework.git",
+    "directory": "packages/package"
+  },
+  "homepage": "https://github.com/guyuedumingx/uair-framework#readme",
+  "bugs": {
+    "url": "https://github.com/guyuedumingx/uair-framework/issues"
+  }
+}

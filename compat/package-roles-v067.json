@@ -1,0 +1,82 @@
+{
+  "@uair/core": {
+    "layer": "core",
+    "required": true,
+    "purpose": "generic durable execution semantics"
+  },
+  "@uair/sqlite": {
+    "layer": "runtime-adapter",
+    "required": false,
+    "purpose": "SQLite runtime/storage adapter"
+  },
+  "@uair/postgres": {
+    "layer": "runtime-adapter",
+    "required": false,
+    "purpose": "PostgreSQL runtime/storage adapter"
+  },
+  "@uair/ui": {
+    "layer": "platform",
+    "required": false,
+    "purpose": "UI suspension/surface primitives"
+  },
+  "@uair/interaction": {
+    "layer": "platform",
+    "required": false,
+    "purpose": "external interaction delivery/resolution"
+  },
+  "@uair/agent": {
+    "layer": "platform",
+    "required": false,
+    "purpose": "Agent framework boundary adapters"
+  },
+  "@uair/mcp": {
+    "layer": "platform",
+    "required": false,
+    "purpose": "MCP adapter"
+  },
+  "@uair/package": {
+    "layer": "platform",
+    "required": false,
+    "purpose": "Capability/package contracts"
+  },
+  "@uair/security": {
+    "layer": "platform",
+    "required": false,
+    "purpose": "host security policies"
+  },
+  "@uair/sandbox": {
+    "layer": "platform",
+    "required": false,
+    "purpose": "sandbox package execution/acquisition"
+  },
+  "@uair/otel": {
+    "layer": "platform",
+    "required": false,
+    "purpose": "observability projection"
+  },
+  "@uair/ops": {
+    "layer": "platform",
+    "required": false,
+    "purpose": "operator health/drain/recovery helpers"
+  },
+  "@uair/builder": {
+    "layer": "tooling",
+    "required": false,
+    "purpose": "AI/deterministic project builder"
+  },
+  "@uair/forge": {
+    "layer": "tooling",
+    "required": false,
+    "purpose": "package/capability generation"
+  },
+  "@uair/cli": {
+    "layer": "tooling",
+    "required": false,
+    "purpose": "builder/release CLI"
+  },
+  "@uair/oa": {
+    "layer": "domain-reference",
+    "required": false,
+    "purpose": "OA/approval reference package"
+  }
+}

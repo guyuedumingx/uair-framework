@@ -1,0 +1,29 @@
+node_modules/
+dist/
+*.tsbuildinfo
+
+.uair/
+.candidate/
+
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.tgz
+
+.env
+.env.*
+!.env.example
+
+.DS_Store
+coverage/
+.nyc_output/
+
+# Graphify keeps reusable reports/data here; local interpreter/cache markers
+# contain machine-specific paths and should stay out of source control.
+graphify-out/.graphify_*
+graphify-out/cache/
+graphify-out/cost.json
+
+.idea/
+.vscode/*
+!.vscode/extensions.json

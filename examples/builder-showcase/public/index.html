@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>UAIR Builder</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="glow a"></div>
+  <div class="glow b"></div>
+
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="mark">U</div>
+        <div>
+          <strong>UAIR Builder</strong>
+          <span>Describe → Build → Verify → Package</span>
+        </div>
+      </div>
+      <div class="badge">AI SOFTWARE ENGINEER</div>
+    </header>
+
+    <section class="hero">
+      <div class="eyebrow">BUILD FIXED BUSINESS SOFTWARE WITH AI</div>
+      <h1>说出业务，<br><span>AI 给你造一套软件。</span></h1>
+      <p>
+        Builder 会先理解业务，再复用公司现有 Capability，生成 Workflow、Component、
+        Surface、Tests 和 npm Package Proposal。运行时规则仍由 UAIR 保证。
+      </p>
+    </section>
+
+    <section class="composer glass">
+      <textarea id="requirement">修改现有请假系统：所有请假直属经理审批，超过2天就要追加部门负责人审批，余额不足不能提交，审批后写入考勤并审计。</textarea>
+      <div class="composer-bottom">
+        <span>Company scope <code>@acme</code></span>
+        <button id="buildButton">Build application ↗</button>
+      </div>
+    </section>
+
+    <section id="progress" class="progress hidden">
+      <div class="step active"><b>01</b><span>Understand</span></div><i></i>
+      <div class="step"><b>02</b><span>Plan</span></div><i></i>
+      <div class="step"><b>03</b><span>Generate</span></div><i></i>
+      <div class="step"><b>04</b><span>Verify</span></div><i></i>
+      <div class="step"><b>05</b><span>Proposal</span></div>
+    </section>
+
+    <section id="result" class="workspace hidden">
+      <aside class="panel glass">
+        <div class="panel-head">
+          <div><span class="eyebrow">BUSINESS SPEC</span><h2 id="appName">—</h2></div>
+          <span id="pkgBadge" class="pill">—</span>
+        </div>
+
+        <div class="group">
+          <label>Actors</label>
+          <div id="actors" class="chips"></div>
+        </div>
+
+        <div class="group">
+          <label>Rules</label>
+          <div id="rules" class="rules"></div>
+        </div>
+
+        <div class="group">
+          <label>Capabilities</label>
+          <div id="capabilities" class="cap-list"></div>
+        </div>
+      </aside>
+
+      <section class="panel glass main-panel">
+        <div class="panel-head">
+          <div><span class="eyebrow">ARCHITECTURE</span><h2>Generated application</h2></div>
+          <span id="verifyBadge" class="verified">VERIFIED</span>
+        </div>
+
+        <div class="architecture">
+          <div class="version-evolution">
+            <div>
+              <small>CURRENT</small>
+              <b id="currentVersion">v—</b>
+            </div>
+            <span>→</span>
+            <div class="next">
+              <small>PROPOSED</small>
+              <b id="targetVersion">v—</b>
+            </div>
+          </div>
+          <div class="arch-node workflow">
+            <small>WORKFLOW</small>
+            <b id="workflowId">—</b>
+          </div>
+          <div class="arrow">↓</div>
+          <div id="surfaceNodes" class="surface-nodes"></div>
+          <div class="arrow">↓</div>
+          <div class="arch-node effects">
+            <small>EFFECTS</small>
+            <b>attendance.update · audit.append</b>
+          </div>
+        </div>
+
+        <div class="proposal">
+          <div>
+            <span class="eyebrow">RELEASE PROPOSAL</span>
+            <h3><span id="releasePkg">—</span> <em id="releaseVersion">—</em></h3>
+          </div>
+          <button>Open Preview</button>
+        </div>
+
+        <div class="change-set">
+          <div class="change-head">
+            <div><span class="eyebrow">CHANGE SET</span><h3>What will actually change</h3></div>
+            <span id="changeSafety" class="safe-badge">SAFE</span>
+          </div>
+          <div class="change-counts">
+            <div><b id="addedCount">0</b><span>ADD</span></div>
+            <div><b id="modifiedCount">0</b><span>MODIFY</span></div>
+            <div><b id="removedCount">0</b><span>REMOVE</span></div>
+            <div><b id="affectedCount">0</b><span>AFFECTED</span></div>
+          </div>
+          <div id="changeItems" class="change-items"></div>
+        </div>
+
+        <div class="deployment-card">
+          <div class="deployment-head">
+            <div>
+              <span class="eyebrow">DEPLOYMENT PLAN</span>
+              <h3>Cut over now, retire later</h3>
+            </div>
+            <span id="deploymentBadge" class="deployment-badge">—</span>
+          </div>
+          <div class="deployment-flow">
+            <div><small>DEPLOY</small><b id="deployTarget">—</b></div>
+            <span>→</span>
+            <div><small>CUTOVER</small><b>new executions</b></div>
+            <span>→</span>
+            <div><small>RETAIN</small><b id="retainOld">—</b></div>
+            <span>→</span>
+            <div><small>RETIRE GATE</small><b id="retireState">—</b></div>
+          </div>
+          <div id="deploymentSteps" class="deployment-steps"></div>
+        </div>
+
+        <div class="migration-card">
+          <div class="migration-head">
+            <div>
+              <span class="eyebrow">MIGRATION PLAN</span>
+              <h3>How old executions survive the release</h3>
+            </div>
+            <span id="migrationBadge" class="migration-badge">—</span>
+          </div>
+          <div class="migration-route">
+            <div>
+              <small>OLD EXECUTIONS</small>
+              <b id="migrationOld">v— stays pinned</b>
+            </div>
+            <span>∥</span>
+            <div class="new">
+              <small>NEW EXECUTIONS</small>
+              <b id="migrationNew">v—</b>
+            </div>
+          </div>
+          <div id="migrationActions" class="migration-actions"></div>
+        </div>
+
+        <div id="contractCard" class="contract-card">
+          <div class="contract-head">
+            <div>
+              <span class="eyebrow">CONTRACT COMPATIBILITY</span>
+              <h3>Can old data still cross the new boundary?</h3>
+            </div>
+            <span id="contractBadge" class="contract-badge">COMPATIBLE</span>
+          </div>
+          <div class="contract-grid">
+            <div>
+              <span>Breaking issues</span>
+              <b id="contractIssueCount">0</b>
+            </div>
+            <div>
+              <span>Pending payloads checked</span>
+              <b id="payloadSampleCount">0</b>
+            </div>
+            <div>
+              <span>Pending payloads compatible</span>
+              <b id="payloadCompatibleCount">0</b>
+            </div>
+          </div>
+          <div id="contractIssues" class="contract-issues"></div>
+        </div>
+
+        <div id="runtimeRisk" class="runtime-risk">
+          <div class="risk-head">
+            <span class="eyebrow">LIVE RUNTIME IMPACT</span>
+            <b id="riskLabel">—</b>
+          </div>
+          <div class="risk-grid">
+            <div><span>Active</span><b id="activeCount">0</b></div>
+            <div><span>Suspended</span><b id="suspendedCount">0</b></div>
+            <div><span>Observed versions</span><b id="observedVersions">—</b></div>
+          </div>
+          <p id="riskNote">—</p>
+        </div>
+
+        <div class="metrics">
+          <div><span>Artifacts</span><b id="artifactCount">0</b></div>
+          <div><span>Tests</span><b id="testCount">0</b></div>
+          <div><span>Surfaces</span><b id="surfaceCount">0</b></div>
+          <div><span>Impact</span><b id="impactRisk">NONE</b></div>
+        </div>
+      </section>
+
+      <aside class="panel glass">
+        <div class="panel-head">
+          <div><span class="eyebrow">PACKAGE FILES</span><h2>Artifacts</h2></div>
+        </div>
+        <div id="files" class="files"></div>
+
+        <div class="code-preview">
+          <div class="code-head"><span>Generated Workflow</span><code>TypeScript</code></div>
+          <pre id="code"></pre>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

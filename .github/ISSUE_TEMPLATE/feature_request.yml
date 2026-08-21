@@ -1,0 +1,32 @@
+name: Feature request
+description: Propose a focused UAIR improvement
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Describe the concrete user/system problem before proposing an abstraction.
+    validations:
+      required: true
+  - type: textarea
+    id: existing
+    attributes:
+      label: Why existing primitives are insufficient
+      description: Explain why Workflow, Component, Suspension, packages/adapters, or tooling cannot express the need.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+    validations:
+      required: true
+  - type: checkboxes
+    id: core
+    attributes:
+      label: Core impact
+      options:
+        - label: I considered whether this can remain outside Runtime Core.
+          required: true

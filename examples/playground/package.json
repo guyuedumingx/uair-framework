@@ -1,0 +1,15 @@
+{
+  "name": "uair-example-playground",
+  "version": "0.67.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node dist/server.js"
+  },
+  "dependencies": {
+    "@uair/core": "0.67.0",
+    "@uair/ui": "0.67.0",
+    "@uair/agent": "0.67.0"
+  },
+  "license": "MIT"
+}

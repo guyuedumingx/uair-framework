@@ -1,0 +1,11 @@
+{
+  "name": "uair-example-reliable-queue",
+  "version": "0.67.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@uair/core": "0.67.0",
+    "@uair/sqlite": "0.67.0"
+  },
+  "license": "MIT"
+}

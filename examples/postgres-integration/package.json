@@ -1,0 +1,13 @@
+{
+  "name": "uair-example-postgres-integration",
+  "version": "0.67.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node index.mjs"
+  },
+  "dependencies": {
+    "pg": "^8.13.0"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>UAIR Office — AI Native Approval</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div id="demoIntro" class="demo-intro">
+    <div class="intro-core">
+      <div class="intro-logo">U</div>
+      <div class="intro-kicker">UAIR OFFICE · LIVE EXECUTION</div>
+      <h2>这不是一张流程图。</h2>
+      <p>它是一段正在持久执行的 TypeScript。</p>
+      <button id="enterDemo">进入演示 <span>→</span></button>
+    </div>
+  </div>
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">U</div>
+        <div>
+          <div class="brand-name">UAIR Office</div>
+          <div class="brand-sub">Durable AI workflow showcase</div>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <div id="runtimeBadge" class="status-badge">
+          <span class="status-dot"></span>
+          <span id="runtimeStatusText">Runtime online</span>
+        </div>
+        <button id="newButton" class="ghost-btn">新建申请</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <div class="kicker">AI NATIVE ENTERPRISE SOFTWARE</div>
+        <h1>AI 可以建议，<br><span>制度仍然决定。</span></h1>
+        <p>
+          一份普通差旅申请，经过 AI 分析、固定审批、Durable Suspension、
+          恢复执行与审计落盘。整个流程由普通 TypeScript 定义。
+        </p>
+      </div>
+
+      <div class="hero-proof">
+        <div class="proof-number">01</div>
+        <div>
+          <strong>Normal code</strong>
+          <span>不是另一张需要维护的流程图</span>
+        </div>
+        <div class="proof-number">02</div>
+        <div>
+          <strong>Durable wait</strong>
+          <span>审批等两天，进程死掉也没关系</span>
+        </div>
+        <div class="proof-number">03</div>
+        <div>
+          <strong>Bounded AI</strong>
+          <span>Agent 能分析，不能绕过审批与审计</span>
+        </div>
+      </div>
+    </section>
+
+    <div id="flowRail" class="flow-rail">
+      <div class="flow-step active" data-flow="request"><b>01</b><span>Request</span></div>
+      <i></i>
+      <div class="flow-step" data-flow="ai"><b>02</b><span>AI Review</span></div>
+      <i></i>
+      <div class="flow-step" data-flow="human"><b>03</b><span>Human Gate</span></div>
+      <i></i>
+      <div class="flow-step" data-flow="commit"><b>04</b><span>Commit</span></div>
+    </div>
+    <section class="workspace">
+      <aside class="request-panel glass">
+        <div class="panel-header">
+          <div>
+            <span class="eyebrow">REQUEST</span>
+            <h2>差旅费用申请</h2>
+          </div>
+          <div id="requestStatus" class="pill draft">DRAFT</div>
+        </div>
+
+        <div class="avatar-line">
+          <div class="avatar">王</div>
+          <div>
+            <strong>王小宇</strong>
+            <span>产品与智能化部 · 产品经理</span>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <label>
+            <span>申请事项</span>
+            <input id="titleInput" value="AI Agent 行业大会差旅" />
+          </label>
+
+          <label>
+            <span>费用类型</span>
+            <select id="categoryInput">
+              <option>差旅费</option>
+              <option>业务招待费</option>
+              <option>采购费</option>
+            </select>
+          </label>
+
+          <label>
+            <span>申请金额</span>
+            <div class="money-input">
+              <span>¥</span>
+              <input id="amountInput" type="number" value="6800" />
+            </div>
+          </label>
+
+          <label class="wide">
+            <span>申请说明</span>
+            <textarea id="descriptionInput">参加深圳 AI Agent 产业大会，与三家潜在合作方进行产品交流。</textarea>
+          </label>
+        </div>
+
+        <button id="startButton" class="primary-btn">
+          <span>提交并启动 Workflow</span>
+          <span class="arrow">↗</span>
+        </button>
+
+        <div id="crashHint" class="crash-hint hidden">
+          <b>现在试试真正杀掉 Server。</b>
+          <span>页面会检测离线；重启后这份审批仍会存在。</span>
+        </div>
+        <div class="mini-note">
+          <span class="lock-icon">⌁</span>
+          Workflow ID
+          <code>oa.expense.apply</code>
+        </div>
+      </aside>
+
+      <section class="decision-panel glass">
+        <div class="panel-header">
+          <div>
+            <span class="eyebrow">AI + POLICY</span>
+            <h2>智能审查</h2>
+          </div>
+          <div class="ai-orb">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+
+        <div id="analysisEmpty" class="empty-state">
+          <div class="empty-symbol">✦</div>
+          <strong>等待 Workflow 启动</strong>
+          <span>AI 会读取政策与预算，但最终审批仍由固定流程控制。</span>
+        </div>
+
+        <div id="analysisContent" class="analysis-content hidden">
+          <div class="score-row">
+            <div>
+              <span class="small-label">AI RISK</span>
+              <div id="riskBadge" class="risk medium">MEDIUM</div>
+            </div>
+            <div class="score">
+              <span id="scoreValue">82</span>
+              <small>/ 100</small>
+            </div>
+          </div>
+
+          <div class="insight-card accent">
+            <span class="card-label">AI 建议</span>
+            <p id="memoText">建议批准该差旅申请。</p>
+          </div>
+
+          <div class="facts">
+            <div class="fact">
+              <span>适用制度</span>
+              <strong id="policyText">FIN-EXP-2026</strong>
+            </div>
+            <div class="fact">
+              <span>部门剩余额度</span>
+              <strong id="budgetText">¥42,800</strong>
+            </div>
+            <div class="fact">
+              <span>固定审批链</span>
+              <strong id="routeText">直属经理</strong>
+            </div>
+          </div>
+
+          <div class="reasons" id="reasonList"></div>
+
+          <div id="recoveryProof" class="recovery-proof hidden">
+            <div class="recovery-icon">↻</div>
+            <div>
+              <b>RUNTIME RESTART DETECTED</b>
+              <span>新的进程已接管 · Pending Suspension 从持久化状态恢复</span>
+            </div>
+            <code id="bootTransition">—</code>
+          </div>
+          <div id="suspendBanner" class="suspend-banner hidden">
+            <div class="suspend-pulse"></div>
+            <div><b>EXECUTION SUSPENDED</b><span>状态已持久化 · 现在可以安全关闭进程</span></div>
+          </div>
+          <div id="approvalCard" class="approval-card hidden">
+            <div>
+              <span class="approval-label">HUMAN DECISION REQUIRED</span>
+              <h3>直属经理审批</h3>
+              <p>Workflow 已 durable suspended。只有返回审批结果后，后续持久化与审计才会执行。</p>
+            </div>
+
+            <textarea id="commentInput">同意，按制度报销。</textarea>
+
+            <div class="approval-actions">
+              <button id="rejectButton" class="reject-btn">退回</button>
+              <button id="approveButton" class="approve-btn">批准并继续</button>
+            </div>
+          </div>
+
+          <div id="commitFlash" class="commit-flash hidden">
+            <span>✓</span><div><b>Durable commit</b><small>Decision persisted · Audit appended</small></div>
+          </div>
+          <div id="completedCard" class="completed-card hidden">
+            <div class="completed-icon">✓</div>
+            <div>
+              <strong>Workflow completed</strong>
+              <span id="completedText">审批已完成并写入审计记录。</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="trace-panel glass">
+        <div class="panel-header">
+          <div>
+            <span class="eyebrow">EXECUTION</span>
+            <h2>Live Trace</h2>
+          </div>
+          <div id="executionStatus" class="pill idle">IDLE</div>
+        </div>
+
+        <div id="traceList" class="trace-list">
+          <div class="trace-empty">
+            <div>⌁</div>
+            <span>执行轨迹将在这里实时出现</span>
+          </div>
+        </div>
+
+        <div id="runtimeMeta" class="runtime-meta hidden">
+          <div>
+            <span>workflow</span>
+            <code id="metaWorkflow">—</code>
+          </div>
+          <div>
+            <span>version</span>
+            <code id="metaVersion">—</code>
+          </div>
+          <div>
+            <span>fingerprint</span>
+            <code id="metaFingerprint">—</code>
+          </div>
+          <div>
+            <span>history</span>
+            <code id="metaHistory">—</code>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="code-strip">
+      <div class="code-copy">
+        <span class="eyebrow">THE DIFFERENCE</span>
+        <h2>你写的是代码，系统得到的是 Durable Execution。</h2>
+      </div>
+      <pre><code>export const expense = workflow({
+  id: "oa.expense.apply",
+  async run(input) {
+    const context = await parallel([policy(input), budget(input)]);
+    const ai = await reviewer(input);
+    const decision = await managerApproval({ input, ai, context });
+    await persist(decision);
+    await audit(decision);
+  }
+});</code></pre>
+    </section>
+  </main>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

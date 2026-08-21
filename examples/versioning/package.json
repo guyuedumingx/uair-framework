@@ -1,0 +1,10 @@
+{
+  "name": "uair-example-versioning",
+  "version": "0.67.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@uair/core": "0.67.0"
+  },
+  "license": "MIT"
+}

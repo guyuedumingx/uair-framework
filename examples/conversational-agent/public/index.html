@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>UAIR Agent Surface</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="orb orb-a"></div>
+  <div class="orb orb-b"></div>
+
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">U</div>
+        <div>
+          <strong>UAIR Agent Surface</strong>
+          <span>Durable conversational application</span>
+        </div>
+      </div>
+
+      <div class="runtime">
+        <span class="dot"></span>
+        <span>Waiting is durable</span>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="eyebrow">CONVERSATION → CAPABILITY → UI</div>
+      <h1>说一句话，<br><span>界面自己长出来。</span></h1>
+      <p>
+        用户输入自然语言或语音，Agent 决定下一步能力；结果可以是文字、列表、
+        详情页或能力安装流程。每一轮输入本身都是一个 Durable Suspension。
+      </p>
+    </section>
+
+    <section class="stage">
+      <aside class="history glass">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">CONTEXT</span>
+            <h2>对话轨迹</h2>
+          </div>
+          <span id="turnBadge" class="turn-badge">TURN 0</span>
+        </div>
+
+        <div id="transcript" class="transcript">
+          <div class="empty">
+            <span>⌁</span>
+            <p>启动后，每轮用户输入都会成为可恢复的执行位置。</p>
+          </div>
+        </div>
+
+        <div class="durable-note">
+          <b>Durable Turn</b>
+          <span>即使 Server 此刻退出，当前输入等待仍然可以恢复。</span>
+        </div>
+      </aside>
+
+      <section class="surface glass">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">DYNAMIC SURFACE</span>
+            <h2 id="surfaceTitle">准备启动</h2>
+          </div>
+          <div id="surfaceKind" class="kind-pill">IDLE</div>
+        </div>
+
+        <div id="surfaceBody" class="surface-body">
+          <div class="launch">
+            <div class="launch-symbol">✦</div>
+            <h3>一个 Agent，不止返回聊天文字</h3>
+            <p>它可以按用户当前意图，返回真正可交互的业务 UI。</p>
+            <button id="startButton">启动 Agent</button>
+          </div>
+        </div>
+
+        <div id="inputDock" class="input-dock hidden">
+          <button id="micButton" class="mic-btn" title="语音输入">◉</button>
+          <input
+            id="commandInput"
+            placeholder="例如：查一下重点客户列表"
+            autocomplete="off"
+          />
+          <button id="sendButton" class="send-btn">发送 ↗</button>
+        </div>
+
+        <div id="suggestions" class="suggestions hidden"></div>
+      </section>
+
+      <aside class="capability glass">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">RUNTIME + CAPABILITY</span>
+            <h2>实时执行状态</h2>
+          </div>
+          <span id="runtimeStatus" class="kind-pill">IDLE</span>
+        </div>
+
+        <div id="runtimeFacts" class="runtime-facts">
+          <div><span>Workflow</span><b>—</b></div>
+          <div><span>Version</span><b>—</b></div>
+          <div><span>Revision</span><b>—</b></div>
+          <div><span>History</span><b>—</b></div>
+        </div>
+
+        <div class="flow-legend">
+          <div><span class="flow-dot display"></span><b>Display</b><small>non-blocking</small></div>
+          <div><span class="flow-dot blocking"></span><b>Surface</b><small>blocking durable wait</small></div>
+        </div>
+
+        <div id="ambientSurface" class="ambient-slot hidden"></div>
+
+        <div class="section-head capability-head">
+          <div>
+            <span class="eyebrow">CAPABILITY SOURCES</span>
+            <h2>能力来源</h2>
+          </div>
+        </div>
+
+        <div class="cap-source active">
+          <span class="source-icon">C</span>
+          <div>
+            <b>Loaded Components</b>
+            <small>本地 durable capability</small>
+          </div>
+          <em>READY</em>
+        </div>
+
+        <div class="cap-source">
+          <span class="source-icon">M</span>
+          <div>
+            <b>MCP</b>
+            <small>远程工具与 Apps</small>
+          </div>
+          <em>CONNECT</em>
+        </div>
+
+        <div class="cap-source">
+          <span class="source-icon">N</span>
+          <div>
+            <b>npm Packages</b>
+            <small>可发现、授权后获取</small>
+          </div>
+          <em>CATALOG</em>
+        </div>
+
+        <div class="cap-source forge">
+          <span class="source-icon">✦</span>
+          <div>
+            <b>AI Forge</b>
+            <small>缺能力时生成 package 草稿</small>
+          </div>
+          <em>EXPERIMENTAL</em>
+        </div>
+
+        <div class="timeline-head">
+          <span class="eyebrow">DURABLE TIMELINE</span>
+        </div>
+        <div id="runtimeTimeline" class="runtime-timeline">
+          <div class="timeline-empty">启动后显示最近的 durable events</div>
+        </div>
+
+        <div class="safety">
+          <span>安全边界</span>
+          <code>Discover → Inspect → Sandbox → Approve → Activate</code>
+        </div>
+      </aside>
+    </section>
+
+    <section class="architecture">
+      <div>
+        <span class="eyebrow">ONE LONG-RUNNING WORKFLOW</span>
+        <h2>展示 UI，不等于阻塞流程。</h2>
+        <p>Display Surface 只是展示；真正需要用户输入时才由 blocking Surface 创建 Durable Suspension。文字、语音和点击最终都回到同一条 Execution。</p>
+      </div>
+
+      <pre><code>while (true) {
+  const action = await nextTurn({ view, transcript });
+
+  // action 可以是文字，也可以是 UI 点击
+  view = await agent.respond(action);
+
+  // 下一轮再次 durable wait
+}</code></pre>
+    </section>
+  </main>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
