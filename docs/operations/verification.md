@@ -23,6 +23,17 @@ This verifies process isolation and database arbitration. It does not by itself
 prove cross-machine network-partition behavior or universal exactly-once
 external effects.
 
+## PostgreSQL mixed-binary rolling upgrade — v0.68
+
+The live gate installs the published v0.67 Core/PostgreSQL packages into a
+temporary isolated prefix and runs their storage adapter beside the local v0.68
+candidate against one database. Both binaries can read and write the current
+schema. A cross-binary optimistic revision race accepts exactly one writer.
+
+Routing evidence separately pins v1 resume work to a draining v1 worker, sends
+new v2 admissions to an active v2 worker, refuses new v1 admission, and permits
+v1 shutdown only after queued and active work both reach zero.
+
 The productized monorepo was validated package-by-package.
 
 Successful builds:

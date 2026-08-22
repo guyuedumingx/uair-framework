@@ -56,8 +56,8 @@ These are blockers.
 - [x] ContractGraph compatibility
 - [x] MigrationPlan + DeploymentPlan + RetireGate
 - [x] Agent framework compatibility ownership rules
-- [ ] UAIR Core N-1 / N / N+1 storage-format compatibility suite — History + SQLite PASS including future-schema refusal; PostgreSQL live DB pending
-- [ ] rolling-upgrade test with mixed Runtime binary versions — v0.54/v0.55 share SQLite schema v2 and same-schema mixed-writer window PASS; real previous-binary + PostgreSQL rolling test pending
+- [x] UAIR Core N-1 / N / N+1 storage-format compatibility suite — History + SQLite PASS including future-schema refusal; PostgreSQL forward-schema refusal runs in the live gate
+- [x] rolling-upgrade test with mixed Runtime binary versions — published v0.67 and candidate v0.68 write one disposable PostgreSQL database; revision conflicts remain first-writer-safe and version-pinned routing/drain passes
 - [x] adapter API compatibility policy and semver conformance tests — machine-readable public adapter export snapshot + release gate
 - [x] package install/upgrade/rollback end-to-end test — real local npm tarball 1.0.0 → 1.1.0 → 1.0.0
 

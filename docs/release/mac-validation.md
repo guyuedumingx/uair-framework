@@ -214,8 +214,8 @@ enforcement.
 v0.58 locally verifies History/SQLite N-1/N/N+1 semantics and a same-schema
 mixed-writer window.
 
-Before 1.0, run an actual previous release binary and the candidate binary
-against a disposable shared PostgreSQL database:
+The live release gate now installs the published previous release and runs it
+beside the candidate against a disposable shared PostgreSQL database:
 
 ```text
 old workers continue pinned Executions
@@ -226,6 +226,18 @@ rollback is refused if storage schema is too new
 ```
 
 Keep this as CI evidence for every storage-schema-changing release.
+
+Current evidence:
+
+```text
+previous binary       0.67.0 from npm
+candidate binary      0.68.0 local build
+shared writes         PASS
+revision race         exactly one writer accepted
+old pinned resume     draining v1 worker
+new admission         active v2 worker
+shutdown              only after old queue/active counts reach zero
+```
 
 
 ## 10. Independent documentation acceptance — REQUIRED BEFORE PUBLIC ALPHA TAG

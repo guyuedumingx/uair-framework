@@ -60,7 +60,7 @@ Current final-environment status:
 - [x] live PostgreSQL 16 suite on macOS;
 - [x] 50-cycle live resilience soak;
 - [ ] long soak;
-- [ ] mixed-binary rolling upgrade;
+- [x] mixed-binary rolling upgrade (published v0.67 + candidate v0.68 against shared PostgreSQL);
 - [ ] real package registry/provenance;
 - [ ] live external Agent SDK adapters;
 - [ ] real gateway/network sandbox.

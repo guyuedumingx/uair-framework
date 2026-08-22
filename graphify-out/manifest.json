@@ -160,9 +160,9 @@
     "semantic_hash": "aa2c5789b834c066776a39ddc9da69d5"
   },
   "package.json": {
-    "mtime": 1787369594.9517272,
-    "ast_hash": "720e1b3a7d8fe9f68e959d0f59bf7dc1",
-    "semantic_hash": "720e1b3a7d8fe9f68e959d0f59bf7dc1"
+    "mtime": 1787369889.413048,
+    "ast_hash": "bb8e79f36b9f64ca5c8becd50f04a895",
+    "semantic_hash": "bb8e79f36b9f64ca5c8becd50f04a895"
   },
   "packages/agent/package.json": {
     "mtime": 1787367220.7623546,
@@ -790,9 +790,9 @@
     "semantic_hash": "733ff04ad0f1c928fe58856d01178c39"
   },
   "scripts/run-live-release-gate.mjs": {
-    "mtime": 1787369594.9523518,
-    "ast_hash": "fe0d09bb1d4b0bd712dec51f860f7ba5",
-    "semantic_hash": "fe0d09bb1d4b0bd712dec51f860f7ba5"
+    "mtime": 1787369889.413252,
+    "ast_hash": "2425abb3cc15cb74cb8bd4e0eb60315e",
+    "semantic_hash": "2425abb3cc15cb74cb8bd4e0eb60315e"
   },
   "scripts/run-release-check.mjs": {
     "mtime": 1787257926.0,
@@ -1431,5 +1431,15 @@
     "mtime": 1787369594.9508595,
     "ast_hash": "b780b8c3ac79fe4d678f4132c4504044",
     "semantic_hash": "b780b8c3ac79fe4d678f4132c4504044"
+  },
+  "scripts/check-postgres-rolling-upgrade.mjs": {
+    "mtime": 1787369889.41286,
+    "ast_hash": "c6acf2cdc1ef344ca2d5e26d7b838877",
+    "semantic_hash": "c6acf2cdc1ef344ca2d5e26d7b838877"
+  },
+  "scripts/postgres-mixed-binary-worker.mjs": {
+    "mtime": 1787369889.412671,
+    "ast_hash": "df817b08830cb19f8d5d83cfc47d617d",
+    "semantic_hash": "df817b08830cb19f8d5d83cfc47d617d"
   }
 }
