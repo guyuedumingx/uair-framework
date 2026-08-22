@@ -18,7 +18,14 @@ for (const entry of entries) {
   if (!entry.isDirectory()) continue;
 
   const path = join(root, "packages", entry.name, "package.json");
-  const pkg = JSON.parse(await readFile(path, "utf8"));
+  let source;
+  try {
+    source = await readFile(path, "utf8");
+  } catch (error) {
+    if (error?.code === "ENOENT") continue;
+    throw error;
+  }
+  const pkg = JSON.parse(source);
 
   if (pkg.private === true) continue;
 

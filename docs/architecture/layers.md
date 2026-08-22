@@ -1,4 +1,4 @@
-# UAIR Architecture Layers — v0.58
+# UAIR Architecture Layers — v0.68
 
 The repository contains many packages, but they do not have equal architectural
 weight.
@@ -54,15 +54,13 @@ Use only when the host needs them:
 @uair/ui
 @uair/interaction
 @uair/agent
+@uair/capability
 @uair/mcp
 @uair/package
 @uair/security
 @uair/sandbox
 @uair/otel
 @uair/ops
-@uair/builder
-@uair/forge
-@uair/cli
 ```
 
 These extend UAIR without redefining Runtime semantics.
@@ -80,14 +78,16 @@ enterprise host
 → core + postgres + security + ops + selected adapters
 ```
 
-## Layer 4 — Domain/reference packages
+## Layer 4 — Companion projects
 
 ```text
-@uair/oa
+uair-builder       → @uair/builder, @uair/forge, @uair/cli
+uair-integrations  → provider-specific bridges such as Codex adapters
+uair-examples      → @uair/oa and runnable reference applications
 ```
 
-`@uair/oa` is not framework Core. Approval is a reference/domain scenario that
-proves durable human workflow can be built on generic primitives.
+These projects consume the runtime's public contracts but do not define runtime
+semantics. `@uair/oa` remains a reference/domain scenario: approval is not Core.
 
 Future packages may include commerce, asset, risk, CRM or third-party business
 domains without requiring Core changes.

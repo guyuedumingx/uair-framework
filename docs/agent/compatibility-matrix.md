@@ -64,7 +64,8 @@ UAIR durable Workflow
 
 Codex App Server is a bidirectional JSON-RPC interface for embedding the Codex
 harness in an application. `CodexAppServerRuntime` in `@uair/agent` owns only
-the protocol client boundary:
+the protocol client boundary. It is published from the separate
+`uair-integrations` repository:
 
 ```text
 UAIR Workflow

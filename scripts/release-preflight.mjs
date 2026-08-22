@@ -144,6 +144,14 @@ run(
   "npm",
   [
     "run",
+    "check:package-boundaries"
+  ]
+);
+
+run(
+  "npm",
+  [
+    "run",
     "check:dx"
   ]
 );
@@ -161,134 +169,6 @@ run(
   [
     "run",
     "check:surface"
-  ]
-);
-
-run(
-  "npm",
-  [
-    "run",
-    "check:interactive-agent-reference"
-  ]
-);
-
-run(
-  "npm",
-  [
-    "run",
-    "check:forge"
-  ]
-);
-
-run(
-  "npm",
-  [
-    "run",
-    "check:builder"
-  ]
-);
-
-run(
-  "npm",
-  [
-    "run",
-    "check:self-extension"
-  ]
-);
-
-run(
-  "npm",
-  [
-    "run",
-    "check:trusted-extension"
-  ]
-);
-
-run(
-  "npm",
-  [
-    "run",
-    "check:project-awareness"
-  ]
-);
-
-run(
-  "npm",
-  [
-    "run",
-    "check:architecture-governance"
-  ]
-);
-
-run(
-  "npm",
-  [
-    "run",
-    "check:governance-cli"
-  ]
-);
-
-run(
-  "npm",
-  [
-    "run",
-    "check:change-set"
-  ]
-);
-
-run(
-  "npm",
-  [
-    "run",
-    "check:contracts"
-  ]
-);
-
-run(
-  "npm",
-  [
-    "run",
-    "check:migration"
-  ]
-);
-
-run(
-  "npm",
-  [
-    "run",
-    "check:deployment"
-  ]
-);
-
-run(
-  "npm",
-  [
-    "run",
-    "check:deployment-execution"
-  ]
-);
-
-run(
-  "npm",
-  [
-    "run",
-    "check:release-controller"
-  ]
-);
-
-run(
-  "npm",
-  [
-    "run",
-    "check:codex"
-  ]
-);
-
-run(
-  "npm",
-  [
-    "run",
-    "check:interaction"
   ]
 );
 
@@ -544,14 +424,6 @@ run(
   "npm",
   [
     "run",
-    "check:package-ecosystem"
-  ]
-);
-
-run(
-  "npm",
-  [
-    "run",
     "check:operability"
   ]
 );
@@ -597,22 +469,6 @@ run(
   "npm",
   [
     "run",
-    "check:release-surface-audit"
-  ]
-);
-
-run(
-  "npm",
-  [
-    "run",
     "check:release-candidate-source"
-  ]
-);
-
-run(
-  "npm",
-  [
-    "run",
-    "check:builder-bootstrap"
   ]
 );

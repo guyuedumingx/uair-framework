@@ -1,7 +1,7 @@
 {
-  "name": "@uair/interaction",
+  "name": "@uair/capability",
   "version": "0.68.0",
-  "description": "Minimal durable human interaction/inbox layer for UAIR.",
+  "description": "Provider-neutral capability contracts for UAIR packages and adapters.",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -12,28 +12,29 @@
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
-  "license": "MIT",
+  "peerDependencies": {
+    "@uair/core": "^0.68.0"
+  },
+  "devDependencies": {
+    "@uair/core": "0.68.0"
+  },
   "engines": {
     "node": ">=22"
   },
   "publishConfig": {
     "access": "public"
   },
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/guyuedumingx/uair-framework.git",
-    "directory": "packages/interaction"
+    "directory": "packages/capability"
   },
   "homepage": "https://github.com/guyuedumingx/uair-framework#readme",
   "bugs": {
     "url": "https://github.com/guyuedumingx/uair-framework/issues"
-  },
-  "peerDependencies": {
-    "@uair/core": "^0.68.0"
-  },
-  "devDependencies": {
-    "@uair/core": "0.68.0"
   }
 }

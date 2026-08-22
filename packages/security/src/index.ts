@@ -41,6 +41,10 @@ export {
   PackageProvenanceError
 } from "./provenance.js";
 
+export type {
+  PackageInstallerLike
+} from "./provenance.js";
+
 export {
   TenantStorage
 } from "./tenant-storage.js";

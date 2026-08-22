@@ -73,8 +73,8 @@ for (
 
   assert.match(
     pkg.version,
-    /^0\.67\.\d+$/,
-    `${packageName} must participate in the v0.67 compatibility release line`
+    /^0\.68\.\d+$/,
+    `${packageName} must preserve the v0.67 compatibility baseline on the v0.68 release line`
   );
 
   const module =

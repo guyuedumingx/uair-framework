@@ -281,7 +281,7 @@ memory and Skills should stay native.
 
 ## Codex App Server
 
-`@uair/agent` also provides `CodexAppServerRuntime` for embedding the OpenAI
+`@uair/agent-codex` provides `CodexAppServerRuntime` for embedding the OpenAI
 Codex harness through its documented bidirectional app-server protocol:
 
 ```ts
@@ -304,6 +304,10 @@ approval/interaction policy. The default transport is local `codex app-server`
 over JSONL stdio. Remote hosts should supply an authenticated custom transport
 or use SSH/port forwarding; the adapter does not expose an unauthenticated
 public WebSocket.
+
+The provider-specific adapter is maintained in
+<https://github.com/guyuedumingx/uair-integrations>, not in the Runtime
+framework repository.
 
 These are two valid integration modes; neither should replace the other.
 

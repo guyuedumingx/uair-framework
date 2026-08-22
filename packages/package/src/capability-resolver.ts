@@ -8,8 +8,8 @@ import type {
   LoadedUairPackage
 } from "./package-contract.js";
 import type {
-  McpServerAdapter
-} from "@uair/mcp";
+  Component
+} from "@uair/core";
 import {
   capability
 } from "./capability.js";
@@ -53,6 +53,25 @@ export interface PackageCatalog {
     query: string
   ): Promise<
     InstallablePackageRecord[]
+  >;
+}
+
+/**
+ * Structural boundary for connected tool sources such as MCP.
+ *
+ * `@uair/package` deliberately does not depend on a concrete protocol adapter.
+ */
+export interface ConnectedToolSource {
+  listTools(): Promise<Array<{
+    name: string;
+    description?: string;
+    inputSchema?: unknown;
+  }>>;
+  tool(
+    name: string
+  ): Component<
+    Record<string, unknown> | undefined,
+    unknown
   >;
 }
 
@@ -108,7 +127,7 @@ export class CapabilityResolver {
   private readonly mcpServers =
     new Map<
       string,
-      McpServerAdapter
+      ConnectedToolSource
     >();
 
   constructor(
@@ -147,7 +166,7 @@ export class CapabilityResolver {
   addMcp(
     name: string,
     server:
-      McpServerAdapter
+      ConnectedToolSource
   ) {
     this.mcpServers.set(
       name,

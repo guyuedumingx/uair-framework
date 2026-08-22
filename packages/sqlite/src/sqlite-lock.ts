@@ -1,11 +1,11 @@
 import {
   randomUUID
 } from "node:crypto";
-import type { LockManager } from "@uair/core/runtime";
+import type { LockManager } from "@uair/core/adapter";
 import {
   SqliteRuntimeState
 } from "./sqlite-state.js";
-import { runWithFence } from "@uair/core/internal";
+import { runWithFence } from "@uair/core/adapter";
 
 export type SqliteLeaseOptions = {
   leaseMs?: number;

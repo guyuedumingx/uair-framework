@@ -240,7 +240,12 @@ assert.match(
 
 assert.match(
   packageMap,
-  /`@uair\/oa` \| Domain\/reference \| No/
+  /`@uair\/oa` and examples \| Companion references \| No/
+);
+
+assert.match(
+  packageMap,
+  /guyuedumingx\/uair-builder/
 );
 
 const identity =

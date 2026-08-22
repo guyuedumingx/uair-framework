@@ -70,9 +70,25 @@ WorkerHeartbeatPublisher
 
 Cluster scheduling is deliberately separated from the application API. A user should be able to build a local durable application without learning any of these concepts.
 
-## Tier 4 — internal API: no compatibility promise
+## Tier 4 — adapter implementation SPI: alpha
 
-Import from `@uair/core/internal` only when implementing a UAIR storage/locking backend.
+Import from `@uair/core/adapter` only when implementing a UAIR storage or
+locking adapter.
+
+```text
+currentFence
+runWithFence
+StaleFenceError
+LockManager
+```
+
+Application code must not depend on this layer.
+
+## Tier 5 — internal API: no compatibility promise
+
+`@uair/core/internal` remains as a v0.x compatibility path for existing
+adapters. New adapters must use `@uair/core/adapter`; application code must not
+depend on either path.
 
 ```text
 currentFence

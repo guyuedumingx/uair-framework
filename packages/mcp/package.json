@@ -1,6 +1,6 @@
 {
   "name": "@uair/mcp",
-  "version": "0.67.0",
+  "version": "0.68.0",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -17,7 +17,6 @@
     "node": ">=22"
   },
   "dependencies": {
-    "@uair/core": "0.67.0",
     "@modelcontextprotocol/client": "^2.0.0"
   },
   "description": "MCP client adapters that expose MCP tools as UAIR Components.",
@@ -40,5 +39,11 @@
   "homepage": "https://github.com/guyuedumingx/uair-framework#readme",
   "bugs": {
     "url": "https://github.com/guyuedumingx/uair-framework/issues"
+  },
+  "peerDependencies": {
+    "@uair/core": "^0.68.0"
+  },
+  "devDependencies": {
+    "@uair/core": "0.68.0"
   }
 }
