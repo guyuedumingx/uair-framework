@@ -160,9 +160,9 @@
     "semantic_hash": "aa2c5789b834c066776a39ddc9da69d5"
   },
   "package.json": {
-    "mtime": 1787369226.9107456,
-    "ast_hash": "4c90f3f6d14605e4f5d54a721bcee8d1",
-    "semantic_hash": "4c90f3f6d14605e4f5d54a721bcee8d1"
+    "mtime": 1787369594.9517272,
+    "ast_hash": "720e1b3a7d8fe9f68e959d0f59bf7dc1",
+    "semantic_hash": "720e1b3a7d8fe9f68e959d0f59bf7dc1"
   },
   "packages/agent/package.json": {
     "mtime": 1787367220.7623546,
@@ -790,9 +790,9 @@
     "semantic_hash": "733ff04ad0f1c928fe58856d01178c39"
   },
   "scripts/run-live-release-gate.mjs": {
-    "mtime": 1787257926.0,
-    "ast_hash": "214380923d33bf9001f747fa416e6de2",
-    "semantic_hash": "214380923d33bf9001f747fa416e6de2"
+    "mtime": 1787369594.9523518,
+    "ast_hash": "fe0d09bb1d4b0bd712dec51f860f7ba5",
+    "semantic_hash": "fe0d09bb1d4b0bd712dec51f860f7ba5"
   },
   "scripts/run-release-check.mjs": {
     "mtime": 1787257926.0,
@@ -1421,5 +1421,15 @@
     "mtime": 1787369221.8090823,
     "ast_hash": "e23ff4c66efa917f19bad66452cd4c82",
     "semantic_hash": "e23ff4c66efa917f19bad66452cd4c82"
+  },
+  "scripts/check-postgres-multiprocess.mjs": {
+    "mtime": 1787369621.8515978,
+    "ast_hash": "ac0701124af32389df704e54809c8796",
+    "semantic_hash": "ac0701124af32389df704e54809c8796"
+  },
+  "scripts/postgres-process-worker.mjs": {
+    "mtime": 1787369594.9508595,
+    "ast_hash": "b780b8c3ac79fe4d678f4132c4504044",
+    "semantic_hash": "b780b8c3ac79fe4d678f4132c4504044"
   }
 }

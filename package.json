@@ -15,6 +15,7 @@
     "chaos": "node examples/chaos-harness/dist/index.js",
     "check:api": "node scripts/check-v1-api.mjs",
     "test:postgres": "node examples/postgres-integration/index.mjs",
+    "test:postgres-multiprocess": "node scripts/check-postgres-multiprocess.mjs",
     "check:postgres-gate": "node scripts/check-postgres-gate.mjs",
     "test:process-crash": "node examples/process-crash-harness/dist/index.js",
     "check:dx": "node scripts/check-developer-experience.mjs",

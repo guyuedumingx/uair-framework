@@ -1,5 +1,28 @@
 # v0.36 Verification
 
+> The historical sections below retain the version in which each gate was
+> introduced. Current release gates also include the v0.68 durable semantics
+> and PostgreSQL multiprocess checks.
+
+## PostgreSQL multiprocess and SIGKILL verification — v0.68
+
+The live gate starts independent Node.js processes against one PostgreSQL
+database. Twelve contenders claim one routed job; exactly one process wins.
+Another process claims a job and is terminated with `SIGKILL` before ACK. After
+the visibility timeout, a scheduler reclaims and reassigns the job, and a fresh
+process claims and ACKs the same durable job ID.
+
+```text
+contender processes             12
+claim winners                    1
+SIGKILL lease reclaimed          1
+fresh process completed job   PASS
+```
+
+This verifies process isolation and database arbitration. It does not by itself
+prove cross-machine network-partition behavior or universal exactly-once
+external effects.
+
 The productized monorepo was validated package-by-package.
 
 Successful builds:
