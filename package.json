@@ -34,6 +34,7 @@
     "check:deployment": "node scripts/check-deployment-planner.mjs",
     "check:release-controller": "node scripts/check-release-controller.mjs",
     "check:codex": "node scripts/check-codex-backend.mjs",
+    "check:codex-app-server": "node scripts/check-codex-app-server-adapter.mjs",
     "check:interaction": "node scripts/check-interaction.mjs",
     "check:agent-boundary": "node scripts/check-agent-boundary.mjs",
     "check:agent-compatibility": "node scripts/check-agent-compatibility-matrix.mjs",

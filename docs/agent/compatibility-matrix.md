@@ -19,6 +19,7 @@ environment.
 | OpenAI Agents SDK | Session / resumable run state | Agents SDK Session / provider state | SDK HITL / resumable state | Agents SDK | opaque `sessionRef` | No |
 | LangGraph | `thread_id` + checkpointer | LangGraph checkpoint/thread | `interrupt()` + `Command({resume})` | LangGraph / Agent layer | opaque `threadRef` | No |
 | Claude managed/session model | session ID + pinned agent version | Claude session/event history | event-driven session continuation/tool confirmation | Claude agent configuration / skills | opaque `sessionRef` | No |
+| Codex App Server | Codex thread/session ID | Codex app-server thread/rollout state | app-server server requests and turn continuation | Codex config/MCP/skills | opaque `sessionRef` | No |
 | Custom Agent runtime | adapter-defined opaque ref | custom runtime | adapter-defined | custom runtime | opaque ref | No |
 
 ## OpenAI Agents SDK
@@ -58,6 +59,27 @@ OpenAI Agent
 ↓ tool
 UAIR durable Workflow
 ```
+
+## Codex App Server
+
+Codex App Server is a bidirectional JSON-RPC interface for embedding the Codex
+harness in an application. `CodexAppServerRuntime` in `@uair/agent` owns only
+the protocol client boundary:
+
+```text
+UAIR Workflow
+↓
+externalAgent("codex", CodexAppServerRuntime)
+↓
+Codex app-server thread/session
+```
+
+The adapter drives initialization, thread start/resume, turn start, streamed
+notifications, and server-initiated approval/tool-input requests. Codex keeps
+conversation history, skills, sandbox configuration, and checkpoints. The host
+must provide `onServerRequest` for explicit approval handling. The default
+transport is local JSONL stdio; remote hosts should provide an authenticated
+custom transport or use SSH/port forwarding.
 
 ## LangGraph
 

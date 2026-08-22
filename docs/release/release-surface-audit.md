@@ -78,6 +78,7 @@ agent()
 asAgentTool()
 llm()
 externalAgent()
+CodexAppServerRuntime
 durableWorkflowTool()
 ```
 

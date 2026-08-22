@@ -43,7 +43,9 @@
   "@uair/agent": [
     "agent",
     "externalAgent",
-    "durableWorkflowTool"
+    "durableWorkflowTool",
+    "CodexAppServerRuntime",
+    "CodexAppServerRequestError"
   ],
   "@uair/otel": [
     "executionToSpans",
