@@ -517,7 +517,12 @@ This verifies that dispatch success followed by worker and scheduler failure doe
 
 Architectural result:
 
-> Routing chooses the compatible execution environment; the reliable queue owns delivery until ACK. Worker execution is therefore at-least-once at the job-delivery layer, while durable Component replay/idempotency protects logical effects from duplicate side effects.
+> Routing chooses the compatible execution environment; the reliable queue owns
+> delivery until ACK. Worker execution is therefore at-least-once at the
+> job-delivery layer. Completed Component History prevents replay of an already
+> recorded effect. A crash after an external side effect but before History is
+> durable can still retry the handler, so the external operation must
+> deduplicate by `ctx.effectId` or be independently idempotent.
 
 
 ## JobQueue / leaderless scheduler verification

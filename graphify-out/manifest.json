@@ -160,9 +160,9 @@
     "semantic_hash": "aa2c5789b834c066776a39ddc9da69d5"
   },
   "package.json": {
-    "mtime": 1787367687.56975,
-    "ast_hash": "f63e1d28c031932f81a7a062fef30510",
-    "semantic_hash": "f63e1d28c031932f81a7a062fef30510"
+    "mtime": 1787369226.9107456,
+    "ast_hash": "4c90f3f6d14605e4f5d54a721bcee8d1",
+    "semantic_hash": "4c90f3f6d14605e4f5d54a721bcee8d1"
   },
   "packages/agent/package.json": {
     "mtime": 1787367220.7623546,
@@ -780,14 +780,14 @@
     "semantic_hash": "4b8c053b9911f138c0b2dca75ee132d6"
   },
   "scripts/release-plan.mjs": {
-    "mtime": 1787258406.0,
-    "ast_hash": "d4a4fffff2ea3967a977e8b52cd526b5",
-    "semantic_hash": "d4a4fffff2ea3967a977e8b52cd526b5"
+    "mtime": 1787367910.8218715,
+    "ast_hash": "00f4b39585db497aa65eda8db0efc856",
+    "semantic_hash": "00f4b39585db497aa65eda8db0efc856"
   },
   "scripts/release-preflight.mjs": {
-    "mtime": 1787367687.570636,
-    "ast_hash": "e8e59fb324c89ad357e11f9562de54d7",
-    "semantic_hash": "e8e59fb324c89ad357e11f9562de54d7"
+    "mtime": 1787369221.8101926,
+    "ast_hash": "733ff04ad0f1c928fe58856d01178c39",
+    "semantic_hash": "733ff04ad0f1c928fe58856d01178c39"
   },
   "scripts/run-live-release-gate.mjs": {
     "mtime": 1787257926.0,
@@ -1416,5 +1416,10 @@
     "mtime": 1787367647.9050605,
     "ast_hash": "adabdc15d7268c428594f339ff8e19a8",
     "semantic_hash": "adabdc15d7268c428594f339ff8e19a8"
+  },
+  "scripts/check-durable-semantics.mjs": {
+    "mtime": 1787369221.8090823,
+    "ast_hash": "e23ff4c66efa917f19bad66452cd4c82",
+    "semantic_hash": "e23ff4c66efa917f19bad66452cd4c82"
   }
 }

@@ -152,6 +152,14 @@ run(
   "npm",
   [
     "run",
+    "check:durable-semantics"
+  ]
+);
+
+run(
+  "npm",
+  [
+    "run",
     "check:dx"
   ]
 );
