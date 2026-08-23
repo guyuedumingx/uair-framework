@@ -50,7 +50,8 @@
     "check:release-candidate-source": "node scripts/check-release-candidate-source.mjs",
     "check:package-boundaries": "node scripts/check-package-boundaries.mjs",
     "check:durable-semantics": "node scripts/check-durable-semantics.mjs",
-    "check:mcp-client": "node scripts/check-mcp-client.mjs"
+    "check:mcp-client": "node scripts/check-mcp-client.mjs",
+    "check:mcp-runtime-types": "node scripts/check-mcp-runtime-types.mjs"
   },
   "engines": {
     "node": ">=22"

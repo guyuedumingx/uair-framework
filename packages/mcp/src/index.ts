@@ -18,3 +18,16 @@ export type {
   McpStdioProcessPolicy,
   McpToolDefinition
 } from "./client.js";
+
+export {
+  publishWorkflow
+} from "./runtime-types.js";
+
+export type {
+  McpExecutionHandle,
+  McpRuntimeAction,
+  McpRuntimeAuthorizationInput,
+  McpRuntimeAuthorizer,
+  McpRuntimePrincipal,
+  PublishedWorkflow
+} from "./runtime-types.js";
