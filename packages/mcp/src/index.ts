@@ -38,6 +38,10 @@ export {
   createMcpRuntimeServer
 } from "./server.js";
 
+export {
+  createMcpCapabilitySet
+} from "./multi-source.js";
+
 export type {
   CancelMcpExecutionInput,
   McpPublishedTool,
