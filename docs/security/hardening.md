@@ -138,6 +138,19 @@ allowListedMcpStdioPolicy([
 The adapter does not assume that an MCP server is trusted merely because it is
 local.
 
+## MCP remote Runtime boundary
+
+Streamable HTTP remote Runtime deployments authenticate before MCP dispatch.
+In production the endpoint is an OAuth protected resource: OAuth/OIDC
+middleware validates issuer, audience, expiry and scopes, then supplies the
+Principal to the Runtime host. A tool argument is never an identity source.
+
+Bearer tokens and identity-provider claims required only for authorization
+must not enter Workflow input, Component input, durable Execution/History or
+Agent state. Every discover/start/read/resolve/cancel call is re-authorized;
+tool discovery alone is not an authorization grant. Task or fallback handles
+remain Principal-bound, and remote History remains remote.
+
 ## 6. Package identity vs behavior
 
 Package trust has two independent questions:

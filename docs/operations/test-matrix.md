@@ -14,7 +14,10 @@
 | Shared worker registry | Yes | Live Mac PASS | Yes | Yes | Local real-PG evidence; CI observation pending |
 | Atomic capacity reservation | Yes | Live Mac PASS | Yes | Yes | Local real-PG evidence; CI observation pending |
 | Scheduler leaderlessness | Yes | Live Mac PASS | Yes | Yes | Local real-PG evidence; CI observation pending |
-| MCP adapter | Yes | N/A | N/A | Partial | Good |
+| MCP client adapter | Yes | N/A | Cross-process stdio | Partial | Good |
+| MCP Runtime server | JSON file | N/A | stdio + Streamable HTTP | Disconnect/restart | Reference PASS |
+| MCP OAuth interoperability | N/A | N/A | Test bearer middleware only | No | Production OAuth not yet live-tested |
+| MCP Tasks fallback | Yes | N/A | Yes | Client restart | SDK 2.0.0 fallback verified |
 | UI blocking resume | Yes | N/A | N/A | Partial | Good |
 | Dynamic package sandbox contract | Fake runner | N/A | N/A | No | Real sandbox missing |
 | OpenTelemetry projection | Yes | N/A | N/A | No | Projection verified |
