@@ -126,7 +126,7 @@ function projectExecution(
 export function createMcpRuntimeHost(
   options: {
     storage: Storage;
-    workflows: PublishedWorkflow[];
+    workflows: PublishedWorkflow<any, any>[];
     invocations: McpInvocationStore;
     authorize: McpRuntimeAuthorizer;
     interactions?: InteractionResolver;
@@ -134,7 +134,7 @@ export function createMcpRuntimeHost(
 ): McpRuntimeHost {
   const workflows = new Map<
     string,
-    PublishedWorkflow
+    PublishedWorkflow<any, any>
   >();
 
   for (const published of options.workflows) {

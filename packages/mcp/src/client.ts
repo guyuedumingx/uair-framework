@@ -34,6 +34,10 @@ export interface McpClientLike {
         string,
         unknown
       >;
+      _meta?: Record<
+        string,
+        unknown
+      >;
     },
     options?: {
       signal?: AbortSignal;
@@ -47,6 +51,7 @@ export interface McpClientLike {
 export type McpAdapterOptions = {
   tool?: ComponentOptions;
   discoveryTtlMs?: number;
+  callMeta?: Record<string, unknown>;
 };
 
 
@@ -402,7 +407,13 @@ export class McpServerAdapter {
               .callTool(
                 {
                   name: toolName,
-                  arguments: args
+                  arguments: args,
+                  ...(this.options.callMeta
+                    ? {
+                        _meta:
+                          this.options.callMeta
+                      }
+                    : {})
                 },
                 {
                   signal:
@@ -485,6 +496,7 @@ export async function connectMcpHttp(
     McpAdapterOptions & {
       connectionPolicy?:
         McpHttpConnectionPolicy;
+      requestInit?: RequestInit;
     } = {}
 ) {
   const target =
@@ -522,7 +534,11 @@ export async function connectMcpHttp(
   const transport =
     new sdk
       .StreamableHTTPClientTransport(
-        target
+        target,
+        {
+          requestInit:
+            options.requestInit
+        }
       );
 
   await client.connect(

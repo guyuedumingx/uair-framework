@@ -55,7 +55,8 @@
     "check:mcp-invocation-store": "node scripts/check-mcp-invocation-store.mjs",
     "check:mcp-runtime-host": "node scripts/check-mcp-runtime-host.mjs",
     "check:mcp-server": "node scripts/check-mcp-server.mjs",
-    "check:mcp-multi-source": "node scripts/check-mcp-multi-source.mjs"
+    "check:mcp-multi-source": "node scripts/check-mcp-multi-source.mjs",
+    "check:multi-runtime-mcp": "node scripts/check-multi-runtime-mcp.mjs"
   },
   "engines": {
     "node": ">=22"
