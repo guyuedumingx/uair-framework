@@ -34,6 +34,10 @@ export {
   createMcpRuntimeHost
 } from "./runtime-host.js";
 
+export {
+  createMcpRuntimeServer
+} from "./server.js";
+
 export type {
   CancelMcpExecutionInput,
   McpPublishedTool,
