@@ -51,7 +51,8 @@
     "check:package-boundaries": "node scripts/check-package-boundaries.mjs",
     "check:durable-semantics": "node scripts/check-durable-semantics.mjs",
     "check:mcp-client": "node scripts/check-mcp-client.mjs",
-    "check:mcp-runtime-types": "node scripts/check-mcp-runtime-types.mjs"
+    "check:mcp-runtime-types": "node scripts/check-mcp-runtime-types.mjs",
+    "check:mcp-invocation-store": "node scripts/check-mcp-invocation-store.mjs"
   },
   "engines": {
     "node": ">=22"

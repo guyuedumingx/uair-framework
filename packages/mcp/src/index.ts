@@ -23,6 +23,17 @@ export {
   publishWorkflow
 } from "./runtime-types.js";
 
+export {
+  InMemoryMcpInvocationStore,
+  JsonFileMcpInvocationStore
+} from "./invocation-store.js";
+
+export type {
+  McpInvocationIdentity,
+  McpInvocationRecord,
+  McpInvocationStore
+} from "./invocation-store.js";
+
 export type {
   McpExecutionHandle,
   McpRuntimeAction,
