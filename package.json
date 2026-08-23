@@ -49,7 +49,8 @@
     "release:plan": "node scripts/release-plan.mjs",
     "check:release-candidate-source": "node scripts/check-release-candidate-source.mjs",
     "check:package-boundaries": "node scripts/check-package-boundaries.mjs",
-    "check:durable-semantics": "node scripts/check-durable-semantics.mjs"
+    "check:durable-semantics": "node scripts/check-durable-semantics.mjs",
+    "check:mcp-client": "node scripts/check-mcp-client.mjs"
   },
   "engines": {
     "node": ">=22"
