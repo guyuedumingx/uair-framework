@@ -42,6 +42,10 @@ export {
   createMcpCapabilitySet
 } from "./multi-source.js";
 
+export {
+  executionTaskStatus
+} from "./tasks.js";
+
 export type {
   CancelMcpExecutionInput,
   McpPublishedTool,
