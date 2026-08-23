@@ -28,6 +28,21 @@ export {
   JsonFileMcpInvocationStore
 } from "./invocation-store.js";
 
+export {
+  McpExecutionNotCancellableError,
+  McpRuntimeAuthorizationError,
+  createMcpRuntimeHost
+} from "./runtime-host.js";
+
+export type {
+  CancelMcpExecutionInput,
+  McpPublishedTool,
+  McpRuntimeHost,
+  ReadMcpExecutionInput,
+  ResolveMcpInteractionInput,
+  StartMcpWorkflowInput
+} from "./runtime-host.js";
+
 export type {
   McpInvocationIdentity,
   McpInvocationRecord,

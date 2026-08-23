@@ -52,7 +52,8 @@
     "check:durable-semantics": "node scripts/check-durable-semantics.mjs",
     "check:mcp-client": "node scripts/check-mcp-client.mjs",
     "check:mcp-runtime-types": "node scripts/check-mcp-runtime-types.mjs",
-    "check:mcp-invocation-store": "node scripts/check-mcp-invocation-store.mjs"
+    "check:mcp-invocation-store": "node scripts/check-mcp-invocation-store.mjs",
+    "check:mcp-runtime-host": "node scripts/check-mcp-runtime-host.mjs"
   },
   "engines": {
     "node": ">=22"
