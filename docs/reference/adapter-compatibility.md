@@ -84,3 +84,18 @@ secret manager contents
 
 Compatibility tests check the UAIR-facing API; provider-specific live tests
 remain required where external runtimes are involved.
+
+## MCP Runtime adapter contract
+
+`@uair/mcp` owns protocol projection, not durable semantics. Its public server
+surface covers published Workflow descriptors, authorized Runtime Host
+operations, opaque Execution handles, Invocation idempotency stores and the MCP
+server factory. The authorization action vocabulary is `discover`, `start`,
+`read`, `resolve` and `cancel`.
+
+MCP SDK 2.0.0 is the pinned compatibility baseline. Because it exposes only the
+legacy 2025-11-25 Tasks wire types and no current negotiated Tasks server
+runtime, the supported path is the MCP Tasks fallback. `executionTaskStatus()`
+is a lossy mapping, not an advertised Tasks capability. Any future Task must be
+bound to the same Principal as its underlying Execution and must never expose
+complete History.

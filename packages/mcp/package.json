@@ -17,9 +17,12 @@
     "node": ">=22"
   },
   "dependencies": {
-    "@modelcontextprotocol/client": "^2.0.0"
+    "@modelcontextprotocol/client": "^2.0.0",
+    "@modelcontextprotocol/server": "^2.0.0",
+    "@uair/capability": "^0.68.0",
+    "ajv": "^8.20.0"
   },
-  "description": "MCP client adapters that expose MCP tools as UAIR Components.",
+  "description": "MCP client and Runtime Host adapters for UAIR Components and Workflows.",
   "keywords": [
     "uair",
     "ai",

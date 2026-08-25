@@ -1,0 +1,13 @@
+{
+  "name": "uair-example-multi-runtime-mcp",
+  "version": "0.68.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@modelcontextprotocol/node": "2.0.0",
+    "@modelcontextprotocol/server": "2.0.0",
+    "@uair/core": "0.68.0",
+    "@uair/mcp": "0.68.0"
+  },
+  "license": "MIT"
+}
