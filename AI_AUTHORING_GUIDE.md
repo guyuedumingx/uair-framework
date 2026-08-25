@@ -21,6 +21,10 @@ repository.
 11. Do not introduce node-type DSLs when ordinary TypeScript composition works.
 12. Do not bypass deterministic compatibility/release gates because a model
    believes a change is safe.
+13. Do not branch durable control flow on wall-clock time, randomness,
+    environment state or direct I/O; record those values through a Component.
+14. Treat queue delivery as at-least-once. Pass `ctx.effectId` to external
+    systems as an idempotency key; never assume universal exactly-once effects.
 
 ## When modifying Core
 

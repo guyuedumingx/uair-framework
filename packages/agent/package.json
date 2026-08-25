@@ -1,6 +1,6 @@
 {
   "name": "@uair/agent",
-  "version": "0.67.0",
+  "version": "0.68.0",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -15,9 +15,6 @@
   ],
   "engines": {
     "node": ">=22"
-  },
-  "dependencies": {
-    "@uair/core": "0.67.0"
   },
   "description": "Bounded Agent and LLM adapters built on UAIR Components.",
   "keywords": [
@@ -39,5 +36,11 @@
   "homepage": "https://github.com/guyuedumingx/uair-framework#readme",
   "bugs": {
     "url": "https://github.com/guyuedumingx/uair-framework/issues"
+  },
+  "peerDependencies": {
+    "@uair/core": "^0.68.0"
+  },
+  "devDependencies": {
+    "@uair/core": "0.68.0"
   }
 }

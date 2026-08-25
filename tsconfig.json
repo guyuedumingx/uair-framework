@@ -5,6 +5,9 @@
       "path": "packages/core"
     },
     {
+      "path": "packages/capability"
+    },
+    {
       "path": "packages/sqlite"
     },
     {
@@ -26,19 +29,7 @@
       "path": "packages/package"
     },
     {
-      "path": "packages/oa"
-    },
-    {
       "path": "packages/create-uair"
-    },
-    {
-      "path": "examples/basic"
-    },
-    {
-      "path": "examples/enterprise"
-    },
-    {
-      "path": "examples/playground"
     },
     {
       "path": "packages/otel"
@@ -71,28 +62,7 @@
       "path": "examples/process-crash-harness"
     },
     {
-      "path": "examples/oa-showcase"
-    },
-    {
-      "path": "packages/forge"
-    },
-    {
-      "path": "examples/conversational-agent"
-    },
-    {
-      "path": "packages/builder"
-    },
-    {
-      "path": "examples/builder-showcase"
-    },
-    {
-      "path": "packages/cli"
-    },
-    {
       "path": "packages/interaction"
-    },
-    {
-      "path": "examples/interaction-oa-server"
     },
     {
       "path": "packages/ops"

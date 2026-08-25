@@ -5,7 +5,7 @@
 Current release candidate:
 
 ```text
-v0.67
+v0.68
 ```
 
 UAIR is not another “Agent loop” framework. It provides a small durable runtime
@@ -175,45 +175,17 @@ present()
 
 The older `ui()` / `displayUi()` functions remain only for v0.x compatibility.
 
-## Flagship Interactive Agent
+## Runnable examples
 
-Run:
+Reference applications and the OA domain proof are maintained in
+`guyuedumingx/uair-examples`. This keeps examples free to evolve without making
+their product concepts part of Runtime Core.
 
-```bash
-npm run build
-npm run demo:agent
-```
+## AI Builder (companion project)
 
-Open:
-
-```text
-http://localhost:8789
-```
-
-The reference app demonstrates one durable `agent.conversation` Workflow across:
-
-```text
-text
-browser voice
-list clicks
-detail UI
-capability install proposals
-capability generate proposals
-explicit approve/reject
-```
-
-All turns resume the same Execution.
-
-See:
-
-```text
-docs/guides/interactive-agent-reference.md
-```
-
-## AI Builder
-
-`@uair/builder` can analyze an existing UAIR project and propose fixed business
-software.
+`@uair/builder` and the governance CLI are maintained in
+`guyuedumingx/uair-builder`. They analyze UAIR projects while depending only on
+the runtime's public contracts.
 
 ```text
 natural-language requirement
@@ -275,7 +247,8 @@ uair package upgrade @acme/risk-kit 1.1.0 --approve
 uair package rollback @acme/risk-kit --approve
 ```
 
-AI Builder consumes the same package/capability model as human developers.
+AI Builder consumes the same package/capability model as human developers. Its
+commands live in the companion `uair-builder` repository.
 
 See:
 
@@ -380,6 +353,7 @@ Normal application code:
 Advanced hosts/adapters:
 
 ```text
+@uair/core/adapter
 @uair/core/runtime
 ```
 

@@ -1,0 +1,40 @@
+{
+  "name": "@uair/capability",
+  "version": "0.68.0",
+  "description": "Provider-neutral capability contracts for UAIR packages and adapters.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "@uair/core": "^0.68.0"
+  },
+  "devDependencies": {
+    "@uair/core": "0.68.0"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guyuedumingx/uair-framework.git",
+    "directory": "packages/capability"
+  },
+  "homepage": "https://github.com/guyuedumingx/uair-framework#readme",
+  "bugs": {
+    "url": "https://github.com/guyuedumingx/uair-framework/issues"
+  }
+}

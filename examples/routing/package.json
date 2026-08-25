@@ -1,10 +1,10 @@
 {
   "name": "uair-example-routing",
-  "version": "0.67.0",
+  "version": "0.68.0",
   "private": true,
   "type": "module",
   "dependencies": {
-    "@uair/core": "0.67.0"
+    "@uair/core": "0.68.0"
   },
   "license": "MIT"
 }

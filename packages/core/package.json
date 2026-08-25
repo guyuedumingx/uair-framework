@@ -1,6 +1,6 @@
 {
   "name": "@uair/core",
-  "version": "0.67.0",
+  "version": "0.68.0",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -16,6 +16,10 @@
     "./cluster": {
       "types": "./dist/cluster-api.d.ts",
       "import": "./dist/cluster-api.js"
+    },
+    "./adapter": {
+      "types": "./dist/adapter-api.d.ts",
+      "import": "./dist/adapter-api.js"
     },
     "./internal": {
       "types": "./dist/internal-api.d.ts",

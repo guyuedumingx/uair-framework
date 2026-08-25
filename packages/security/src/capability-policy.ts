@@ -9,7 +9,7 @@ import type {
 import {
   CapabilitySet,
   type Capability
-} from "@uair/package";
+} from "@uair/capability";
 
 import type {
   Principal

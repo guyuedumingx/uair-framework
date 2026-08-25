@@ -10,7 +10,7 @@ const corePackage = JSON.parse(
 
 assert.deepEqual(
   Object.keys(corePackage.exports).sort(),
-  [".", "./cluster", "./internal", "./runtime"],
+  [".", "./adapter", "./cluster", "./internal", "./runtime"],
   "@uair/core must expose exactly the reviewed v1-alpha entry points"
 );
 

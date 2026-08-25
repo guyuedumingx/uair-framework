@@ -41,7 +41,7 @@ for (const stale of [
 }
 
 const rootPackage = JSON.parse(await readFile("package.json", "utf8"));
-assert.equal(rootPackage.version, "0.67.0");
+assert.equal(rootPackage.version, "0.68.0");
 assert.equal(rootPackage.private, true);
 assert.equal(rootPackage.license, "MIT");
 assert.match(rootPackage.engines.node, />=22/);
@@ -64,7 +64,7 @@ for (const entry of entries) {
   if (pkg.private === true) continue;
   publishable += 1;
 
-  assert.equal(pkg.version, "0.67.0", `${pkg.name}: synchronized version`);
+  assert.equal(pkg.version, "0.68.0", `${pkg.name}: synchronized version`);
   assert.equal(pkg.license, "MIT", `${pkg.name}: MIT license`);
   assert.ok(pkg.description, `${pkg.name}: description`);
   assert.match(pkg.engines?.node ?? "", />=22/, `${pkg.name}: engines.node`);
@@ -82,7 +82,7 @@ for (const entry of entries) {
 }
 
 const readme = await readFile("README.md", "utf8");
-assert.match(readme, /v0\.67/);
+assert.match(readme, /v0\.68/);
 assert.doesNotMatch(readme, /v0\.65/);
 
 const status = await readFile("docs/release/status.md", "utf8");

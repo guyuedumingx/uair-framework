@@ -47,7 +47,8 @@ export type {
   CapabilityCandidate,
   CapabilitySourceKind,
   InstallablePackageRecord,
-  PackageCatalog
+  PackageCatalog,
+  ConnectedToolSource
 } from "./capability-resolver.js";
 
 export type {

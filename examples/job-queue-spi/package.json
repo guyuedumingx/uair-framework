@@ -1,12 +1,12 @@
 {
   "name": "uair-example-job-queue-spi",
-  "version": "0.67.0",
+  "version": "0.68.0",
   "private": true,
   "type": "module",
   "dependencies": {
-    "@uair/core": "0.67.0",
-    "@uair/sqlite": "0.67.0",
-    "@uair/postgres": "0.67.0"
+    "@uair/core": "0.68.0",
+    "@uair/sqlite": "0.68.0",
+    "@uair/postgres": "0.68.0"
   },
   "license": "MIT"
 }

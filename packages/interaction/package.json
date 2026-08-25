@@ -1,6 +1,6 @@
 {
   "name": "@uair/interaction",
-  "version": "0.67.0",
+  "version": "0.68.0",
   "description": "Minimal durable human interaction/inbox layer for UAIR.",
   "type": "module",
   "main": "./dist/index.js",
@@ -15,9 +15,6 @@
     "dist"
   ],
   "license": "MIT",
-  "dependencies": {
-    "@uair/core": "0.67.0"
-  },
   "engines": {
     "node": ">=22"
   },
@@ -32,5 +29,11 @@
   "homepage": "https://github.com/guyuedumingx/uair-framework#readme",
   "bugs": {
     "url": "https://github.com/guyuedumingx/uair-framework/issues"
+  },
+  "peerDependencies": {
+    "@uair/core": "^0.68.0"
+  },
+  "devDependencies": {
+    "@uair/core": "0.68.0"
   }
 }

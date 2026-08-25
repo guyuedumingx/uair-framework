@@ -1,24 +1,12 @@
 console.log(`
-UAIR v0.18 verification procedure:
+UAIR framework verification procedure:
 
-1. Build package dependencies in order:
-   core
-   ui
-   agent
-   mcp
-   package
-   security
-   sandbox
-   sqlite
-   oa
-   create-uair
+1. npm run clean
+2. npm run build
+3. npm run release:preflight
+4. npm run release:plan
 
-2. Build:
-   examples/basic
-   examples/enterprise
-
-3. Run:
-   node packages/create-uair/dist/index.js demo-app
-
-This repository was verified with that procedure during generation.
+Builder tooling: https://github.com/guyuedumingx/uair-builder
+Examples and OA: https://github.com/guyuedumingx/uair-examples
+Provider adapters: https://github.com/guyuedumingx/uair-integrations
 `);

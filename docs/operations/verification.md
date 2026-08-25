@@ -1,5 +1,39 @@
 # v0.36 Verification
 
+> The historical sections below retain the version in which each gate was
+> introduced. Current release gates also include the v0.68 durable semantics
+> and PostgreSQL multiprocess checks.
+
+## PostgreSQL multiprocess and SIGKILL verification — v0.68
+
+The live gate starts independent Node.js processes against one PostgreSQL
+database. Twelve contenders claim one routed job; exactly one process wins.
+Another process claims a job and is terminated with `SIGKILL` before ACK. After
+the visibility timeout, a scheduler reclaims and reassigns the job, and a fresh
+process claims and ACKs the same durable job ID.
+
+```text
+contender processes             12
+claim winners                    1
+SIGKILL lease reclaimed          1
+fresh process completed job   PASS
+```
+
+This verifies process isolation and database arbitration. It does not by itself
+prove cross-machine network-partition behavior or universal exactly-once
+external effects.
+
+## PostgreSQL mixed-binary rolling upgrade — v0.68
+
+The live gate installs the published v0.67 Core/PostgreSQL packages into a
+temporary isolated prefix and runs their storage adapter beside the local v0.68
+candidate against one database. Both binaries can read and write the current
+schema. A cross-binary optimistic revision race accepts exactly one writer.
+
+Routing evidence separately pins v1 resume work to a draining v1 worker, sends
+new v2 admissions to an active v2 worker, refuses new v1 admission, and permits
+v1 shutdown only after queued and active work both reach zero.
+
 The productized monorepo was validated package-by-package.
 
 Successful builds:
@@ -517,7 +551,12 @@ This verifies that dispatch success followed by worker and scheduler failure doe
 
 Architectural result:
 
-> Routing chooses the compatible execution environment; the reliable queue owns delivery until ACK. Worker execution is therefore at-least-once at the job-delivery layer, while durable Component replay/idempotency protects logical effects from duplicate side effects.
+> Routing chooses the compatible execution environment; the reliable queue owns
+> delivery until ACK. Worker execution is therefore at-least-once at the
+> job-delivery layer. Completed Component History prevents replay of an already
+> recorded effect. A crash after an external side effect but before History is
+> durable can still retry the handler, so the external operation must
+> deduplicate by `ctx.effectId` or be independently idempotent.
 
 
 ## JobQueue / leaderless scheduler verification

@@ -1,10 +1,32 @@
 import type {
-  PackageInstaller
-} from "@uair/package";
-
-import type {
   PackageTrustPolicy
 } from "./trust.js";
+
+export interface PackageInstallerLike {
+  install(
+    packageName: string,
+    version?: string
+  ): Promise<{
+    packageName: string;
+    version?: string;
+    installDir?: string;
+    integrity?: string;
+    resolved?: string;
+    provenance?: {
+      verified: boolean;
+      source?: string;
+      issuer?: string;
+      subject?: string;
+    };
+    evidence?: {
+      lifecycleScripts?: boolean;
+      nativeAddons?: boolean;
+      network?: "none" | "registry-only" | "any";
+      filesystem?: "isolated" | "host-readonly" | "host-readwrite";
+      secretNames?: string[];
+    };
+  }>;
+}
 
 export class PackageProvenanceError
   extends Error {
@@ -19,12 +41,12 @@ export class PackageProvenanceError
 
 export function verifiedPackageInstaller(
   installer:
-    PackageInstaller,
+    PackageInstallerLike,
   trustPolicy:
     PackageTrustPolicy,
   requestedCapability:
     string
-): PackageInstaller {
+): PackageInstallerLike {
   return {
     async install(
       packageName,

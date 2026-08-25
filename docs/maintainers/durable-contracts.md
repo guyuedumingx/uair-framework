@@ -13,6 +13,8 @@ Execution History schema
 Runtime storage schema
 Surface/Interaction payload contracts
 deployment/fingerprint compatibility
+durable structural path/order
+Component effect generation and effectId
 ```
 
 ## Refactoring
@@ -60,4 +62,11 @@ old suspended Execution behavior
 rollback behavior
 release/drain strategy
 tests
+```
+
+Normative execution rules live in:
+
+```text
+docs/architecture/deterministic-execution.md
+docs/architecture/delivery-and-idempotency.md
 ```

@@ -56,6 +56,20 @@ run(
 run(
   "node",
   [
+    "scripts/check-postgres-multiprocess.mjs"
+  ]
+);
+
+run(
+  "node",
+  [
+    "scripts/check-postgres-rolling-upgrade.mjs"
+  ]
+);
+
+run(
+  "node",
+  [
     "scripts/run-soak.mjs",
     "--cycles",
     process.env

@@ -21,6 +21,7 @@ const required = [
   "docs/guides/package-lifecycle.md",
   "docs/guides/production.md",
   "docs/guides/enterprise-project.md",
+  "docs/guides/multi-runtime-agent.md",
   "docs/maintainers/architecture-boundaries.md",
   "docs/maintainers/durable-contracts.md",
   "docs/maintainers/adding-adapter.md",
@@ -240,7 +241,12 @@ assert.match(
 
 assert.match(
   packageMap,
-  /`@uair\/oa` \| Domain\/reference \| No/
+  /`@uair\/oa` and examples \| Companion references \| No/
+);
+
+assert.match(
+  packageMap,
+  /guyuedumingx\/uair-builder/
 );
 
 const identity =
@@ -252,6 +258,31 @@ assert.match(
   identity,
   /Stable identity is mandatory in semantics, minimal in syntax/
 );
+
+const multiRuntimeDocs = [
+  await read("docs/guides/multi-runtime-agent.md"),
+  await read("packages/mcp/README.md"),
+  await read("docs/reference/adapter-compatibility.md"),
+  await read("docs/security/hardening.md"),
+  await read("docs/operations/test-matrix.md")
+].join("\n");
+
+for (const concept of [
+  "MCP-first Multi-Runtime",
+  "stdio local Runtime",
+  "Streamable HTTP remote Runtime",
+  "OAuth protected resource",
+  "explicit Workflow publication",
+  "MCP Tasks fallback",
+  "remote History remains remote",
+  "A2A is optional and outside Core"
+]) {
+  assert.equal(
+    multiRuntimeDocs.includes(concept),
+    true,
+    `Multi-Runtime documentation must include: ${concept}`
+  );
+}
 
 console.log(
   JSON.stringify(

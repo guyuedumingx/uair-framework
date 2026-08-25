@@ -279,6 +279,36 @@ Components. Its tools may participate in UAIR durability.
 `externalAgent()` is for an existing Agent framework whose internal loop,
 memory and Skills should stay native.
 
+## Codex App Server
+
+`@uair/agent-codex` provides `CodexAppServerRuntime` for embedding the OpenAI
+Codex harness through its documented bidirectional app-server protocol:
+
+```ts
+const codex =
+  externalAgent(
+    "codex",
+    new CodexAppServerRuntime({
+      onServerRequest: request => approvalUi.resolve(request)
+    })
+  );
+```
+
+The adapter drives `initialize`, `thread/start` or `thread/resume`, and
+`turn/start`, then consumes streamed notifications until `turn/completed`.
+Codex conversation history, skills, sandbox state, and checkpoints remain
+owned by Codex. UAIR persists only the explicit Component boundary and the
+opaque Codex thread reference. Approval and tool-input requests are surfaced
+to the host through `onServerRequest`; the host must map them to its own
+approval/interaction policy. The default transport is local `codex app-server`
+over JSONL stdio. Remote hosts should supply an authenticated custom transport
+or use SSH/port forwarding; the adapter does not expose an unauthenticated
+public WebSocket.
+
+The provider-specific adapter is maintained in
+<https://github.com/guyuedumingx/uair-integrations>, not in the Runtime
+framework repository.
+
 These are two valid integration modes; neither should replace the other.
 
 ## Skills

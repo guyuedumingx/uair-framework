@@ -20,7 +20,7 @@ import type {
   ExternalEvent
 } from "@uair/core/runtime";
 import { StorageConflictError } from "@uair/core/runtime";
-import { currentFence, StaleFenceError } from "@uair/core/internal";
+import { currentFence, StaleFenceError } from "@uair/core/adapter";
 
 
 export const SQLITE_RUNTIME_SCHEMA_VERSION =

@@ -3,7 +3,7 @@ import {
 } from "@uair/core";
 import type {
   CapabilitySet
-} from "@uair/package";
+} from "@uair/capability";
 
 export type Principal = {
   id: string;

@@ -1,6 +1,6 @@
 {
   "name": "@uair/sandbox",
-  "version": "0.67.0",
+  "version": "0.68.0",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -17,8 +17,9 @@
     "node": ">=22"
   },
   "dependencies": {
-    "@uair/core": "0.67.0",
-    "@uair/security": "0.67.0"
+    "@uair/security": "0.68.0",
+    "@uair/capability": "0.68.0",
+    "@uair/package": "0.68.0"
   },
   "description": "Sandboxed package acquisition and sandbox-proxy capabilities for UAIR.",
   "keywords": [
@@ -40,5 +41,11 @@
   "homepage": "https://github.com/guyuedumingx/uair-framework#readme",
   "bugs": {
     "url": "https://github.com/guyuedumingx/uair-framework/issues"
+  },
+  "peerDependencies": {
+    "@uair/core": "^0.68.0"
+  },
+  "devDependencies": {
+    "@uair/core": "0.68.0"
   }
 }

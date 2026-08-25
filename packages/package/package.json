@@ -1,6 +1,6 @@
 {
   "name": "@uair/package",
-  "version": "0.67.0",
+  "version": "0.68.0",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -17,9 +17,7 @@
     "node": ">=22"
   },
   "dependencies": {
-    "@uair/core": "0.67.0",
-    "@uair/agent": "0.67.0",
-    "@uair/mcp": "0.67.0"
+    "@uair/capability": "0.68.0"
   },
   "description": "Capability discovery, package contracts, and resolver utilities for UAIR.",
   "keywords": [
@@ -41,5 +39,11 @@
   "homepage": "https://github.com/guyuedumingx/uair-framework#readme",
   "bugs": {
     "url": "https://github.com/guyuedumingx/uair-framework/issues"
+  },
+  "peerDependencies": {
+    "@uair/core": "^0.68.0"
+  },
+  "devDependencies": {
+    "@uair/core": "0.68.0"
   }
 }

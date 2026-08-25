@@ -1,6 +1,6 @@
 {
   "name": "@uair/mcp",
-  "version": "0.67.0",
+  "version": "0.68.0",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -17,10 +17,12 @@
     "node": ">=22"
   },
   "dependencies": {
-    "@uair/core": "0.67.0",
-    "@modelcontextprotocol/client": "^2.0.0"
+    "@modelcontextprotocol/client": "^2.0.0",
+    "@modelcontextprotocol/server": "^2.0.0",
+    "@uair/capability": "^0.68.0",
+    "ajv": "^8.20.0"
   },
-  "description": "MCP client adapters that expose MCP tools as UAIR Components.",
+  "description": "MCP client and Runtime Host adapters for UAIR Components and Workflows.",
   "keywords": [
     "uair",
     "ai",
@@ -40,5 +42,11 @@
   "homepage": "https://github.com/guyuedumingx/uair-framework#readme",
   "bugs": {
     "url": "https://github.com/guyuedumingx/uair-framework/issues"
+  },
+  "peerDependencies": {
+    "@uair/core": "^0.68.0"
+  },
+  "devDependencies": {
+    "@uair/core": "0.68.0"
   }
 }

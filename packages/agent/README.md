@@ -10,6 +10,9 @@ Bounded Agent and LLM adapters built on UAIR Components.
 npm install @uair/agent
 ```
 
+Provider-specific implementations, including OpenAI Codex app-server support,
+live in <https://github.com/guyuedumingx/uair-integrations>.
+
 ## Compatibility
 
 This package follows the UAIR alpha compatibility policy. Runtime Core has the
