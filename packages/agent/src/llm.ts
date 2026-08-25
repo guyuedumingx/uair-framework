@@ -6,8 +6,12 @@ import type {
 } from "@uair/core";
 import type {
   AgentAction,
+  AgentActionParser,
   AgentModel,
   AgentTurnContext
+} from "./agent.js";
+import {
+  parseAgentAction
 } from "./agent.js";
 
 export interface LlmProvider {
@@ -66,16 +70,23 @@ export function llm(
 }
 
 /**
- * Minimal adapter showing that an AgentModel can itself be powered by
- * an LLM Component. A real implementation would use structured output
- * / JSON schema rather than free-form JSON parsing.
+ * Adapt an LLM Component into an AgentModel.
+ *
+ * Prefer provider-native structured output when available. For other schema
+ * libraries, pass parseAction to validate/transform the decoded JSON. The
+ * result always passes through the built-in AgentAction validator before it
+ * reaches the Agent loop.
  */
 export function jsonAgentModel(
   modelComponent:
     Component<
       string,
       string
-    >
+    >,
+  options: {
+    parseAction?:
+      AgentActionParser;
+  } = {}
 ): AgentModel {
   return {
     async decide(
@@ -89,9 +100,31 @@ export function jsonAgentModel(
           )
         );
 
-      return JSON.parse(
-        response
-      ) as AgentAction;
+      let decoded:
+        unknown;
+
+      try {
+        decoded =
+          JSON.parse(
+            response
+          );
+      } catch (error) {
+        throw new TypeError(
+          "Agent model returned invalid JSON",
+          {
+            cause:
+              error
+          }
+        );
+      }
+
+      return parseAgentAction(
+        options.parseAction
+          ? options.parseAction(
+              decoded
+            )
+          : decoded
+      );
     }
   };
 }
