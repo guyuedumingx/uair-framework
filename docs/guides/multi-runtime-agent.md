@@ -71,6 +71,9 @@ calls, durable History or Agent state.
 
 The Runtime authorizes every `discover`, `start`, `read`, `resolve` and
 `cancel` operation. Listing a tool is not permission to invoke it forever.
+The Runtime Host also validates the published JSON Schema and binds every
+created Execution to the authenticated tenant/principal access scope. Knowing
+an Execution handle never bypasses that binding.
 
 ## State and failure boundaries
 
@@ -81,6 +84,11 @@ stdio Runtime.
 
 `WorkerDirectory` performs intra-Runtime deployment routing. It is not
 cross-Runtime discovery and must not become a global service registry.
+
+MCP client calls automatically reuse the Component `effectId` as the reserved
+invocation idempotency key. Retries of one durable effect therefore reuse one
+remote Execution, while distinct Component effects cannot be collapsed by a
+static connection-level key.
 
 ## Tasks and other protocols
 

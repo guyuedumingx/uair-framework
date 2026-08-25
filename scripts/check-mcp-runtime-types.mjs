@@ -18,4 +18,8 @@ const published = publishWorkflow({
 assert.equal(published.name, "leave.request");
 assert.equal(published.workflow.id, "hr.leave.request");
 assert.throws(() => publishWorkflow({ ...published, name: "" }), /non-empty MCP tool name/);
+assert.throws(
+  () => publishWorkflow({ ...published, name: "uair.execution.get" }),
+  /reserved by the UAIR Runtime/
+);
 console.log("UAIR MCP published Workflow contract: PASS");

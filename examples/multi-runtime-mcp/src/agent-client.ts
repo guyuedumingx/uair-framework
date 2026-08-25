@@ -33,9 +33,6 @@ const token = process.env.UAIR_TEST_BEARER_TOKEN;
 const stateFile = process.env.UAIR_AGENT_STATE;
 if (!localServer || !localData || !stateFile) throw new Error("Local server, data and Agent state are required");
 
-const callMeta = {
-  "io.uair/idempotency-key": `${mode}-${Date.now()}-${process.pid}`
-};
 const personal = await connectMcpStdio(
   "personal",
   {
@@ -47,8 +44,7 @@ const personal = await connectMcpStdio(
     }
   },
   {
-    processPolicy: allowListedMcpStdioPolicy([process.execPath]),
-    callMeta
+    processPolicy: allowListedMcpStdioPolicy([process.execPath])
   }
 );
 
@@ -62,8 +58,7 @@ if (companyUrl && token) {
     } },
     requestInit: {
       headers: { authorization: `Bearer ${token}` }
-    },
-    callMeta
+    }
   });
 }
 

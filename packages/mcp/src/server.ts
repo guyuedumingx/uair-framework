@@ -14,10 +14,13 @@ import type {
   McpExecutionHandle,
   McpRuntimePrincipal
 } from "./runtime-types.js";
+import {
+  MCP_RUNTIME_TOOL_NAMES
+} from "./runtime-types.js";
 
 const FALLBACK_TOOLS: Tool[] = [
   {
-    name: "uair.execution.get",
+    name: MCP_RUNTIME_TOOL_NAMES.executionGet,
     description: "Read a UAIR execution handle",
     inputSchema: {
       type: "object",
@@ -27,7 +30,7 @@ const FALLBACK_TOOLS: Tool[] = [
     }
   },
   {
-    name: "uair.execution.cancel",
+    name: MCP_RUNTIME_TOOL_NAMES.executionCancel,
     description: "Cancel a suspended UAIR execution",
     inputSchema: {
       type: "object",
@@ -37,7 +40,7 @@ const FALLBACK_TOOLS: Tool[] = [
     }
   },
   {
-    name: "uair.interaction.resolve",
+    name: MCP_RUNTIME_TOOL_NAMES.interactionResolve,
     description: "Resolve a pending UAIR interaction",
     inputSchema: {
       type: "object",
@@ -153,17 +156,26 @@ export function createMcpRuntimeServer(
         const args = request.params.arguments ?? {};
         let handle: McpExecutionHandle;
 
-        if (request.params.name === "uair.execution.get") {
+        if (
+          request.params.name ===
+            MCP_RUNTIME_TOOL_NAMES.executionGet
+        ) {
           handle = await options.host.read({
             principal,
             executionId: stringArgument(args, "executionId")
           });
-        } else if (request.params.name === "uair.execution.cancel") {
+        } else if (
+          request.params.name ===
+            MCP_RUNTIME_TOOL_NAMES.executionCancel
+        ) {
           handle = await options.host.cancel({
             principal,
             executionId: stringArgument(args, "executionId")
           });
-        } else if (request.params.name === "uair.interaction.resolve") {
+        } else if (
+          request.params.name ===
+            MCP_RUNTIME_TOOL_NAMES.interactionResolve
+        ) {
           handle = await options.host.resolve({
             principal,
             interactionId: stringArgument(args, "interactionId"),

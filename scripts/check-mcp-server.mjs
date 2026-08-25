@@ -64,6 +64,23 @@ assert.equal(called.structuredContent.kind, "uair.execution");
 assert.equal(called.structuredContent.status, "completed");
 assert.deepEqual(JSON.parse(called.content[0].text), called.structuredContent);
 
+for (const invalidArguments of [
+  {},
+  { days: "two" },
+  { days: 2, unexpected: true }
+]) {
+  const invalid = await client.callTool({
+    name: "leave.request",
+    arguments: invalidArguments,
+    _meta: {
+      ...metadata,
+      "io.uair/idempotency-key": `invalid-${JSON.stringify(invalidArguments)}`
+    }
+  });
+  assert.equal(invalid.isError, true);
+  assert.match(invalid.content[0].text, /input validation failed/);
+}
+
 await client.close();
 await server.close();
 console.log("UAIR MCP server protocol: PASS");

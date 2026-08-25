@@ -12,6 +12,7 @@ export {
 export type {
   DefaultMcpHttpPolicyOptions,
   McpAdapterOptions,
+  McpCallMetaContext,
   McpCallResult,
   McpClientLike,
   McpHttpConnectionPolicy,
@@ -20,17 +21,24 @@ export type {
 } from "./client.js";
 
 export {
+  MCP_RUNTIME_TOOL_NAMES,
   publishWorkflow
 } from "./runtime-types.js";
 
 export {
+  McpInvocationConflictError,
+  McpInvocationLeaseLostError,
+  McpInvocationStoreCorruptError,
   InMemoryMcpInvocationStore,
   JsonFileMcpInvocationStore
 } from "./invocation-store.js";
 
 export {
+  McpExecutionAccessDeniedError,
   McpExecutionNotCancellableError,
+  McpInvocationInProgressError,
   McpRuntimeAuthorizationError,
+  McpWorkflowInputValidationError,
   createMcpRuntimeHost
 } from "./runtime-host.js";
 
@@ -49,6 +57,7 @@ export {
 export type {
   CancelMcpExecutionInput,
   McpPublishedTool,
+  McpRuntimeHostOptions,
   McpRuntimeHost,
   ReadMcpExecutionInput,
   ResolveMcpInteractionInput,
@@ -57,7 +66,11 @@ export type {
 
 export type {
   McpInvocationIdentity,
+  McpInvocationClaimOptions,
+  McpInvocationClaimResult,
   McpInvocationRecord,
+  McpInvocationStatus,
+  JsonFileMcpInvocationStoreOptions,
   McpInvocationStore
 } from "./invocation-store.js";
 

@@ -51,6 +51,11 @@ const adapter = mcp("company", {
       }
     };
   }
+}, {
+  callMeta: {
+    trace: "connection-trace",
+    "io.uair/idempotency-key": "must-not-win"
+  }
 });
 
 const scenario =
@@ -114,9 +119,31 @@ assert.deepEqual(
       name: "leave.request",
       arguments: {
         days: 1
+      },
+      _meta: {
+        trace: "connection-trace",
+        "io.uair/idempotency-key": execution.history.find(
+          entry => entry.kind === "effect_completed" && entry.component === "mcp:company:leave.request"
+        ).effectId
       }
     }
   ]
+);
+
+const secondExecution = await run(
+  scenario,
+  undefined,
+  new JsonFileStorage(`${storageDir}-second`)
+);
+assert.notEqual(
+  calls[0]._meta["io.uair/idempotency-key"],
+  calls[1]._meta["io.uair/idempotency-key"]
+);
+assert.equal(
+  calls[1]._meta["io.uair/idempotency-key"],
+  secondExecution.history.find(
+    entry => entry.kind === "effect_completed" && entry.component === "mcp:company:leave.request"
+  ).effectId
 );
 
 const failing =

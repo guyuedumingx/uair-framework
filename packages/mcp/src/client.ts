@@ -48,10 +48,28 @@ export interface McpClientLike {
     Promise<void>;
 }
 
+export type McpCallMetaContext = {
+  toolName: string;
+  arguments:
+    Record<string, unknown> |
+    undefined;
+  effectId: string;
+  generation: number;
+  attempt: number;
+};
+
 export type McpAdapterOptions = {
   tool?: ComponentOptions;
   discoveryTtlMs?: number;
-  callMeta?: Record<string, unknown>;
+  callMeta?:
+    | Record<string, unknown>
+    | (
+        (
+          context: McpCallMetaContext
+        ) =>
+          | Record<string, unknown>
+          | Promise<Record<string, unknown>>
+      );
 };
 
 
@@ -402,18 +420,38 @@ export class McpServerAdapter {
           const startedAt =
             Date.now();
 
+          const configuredMeta =
+            typeof this.options.callMeta ===
+              "function"
+              ? await this.options.callMeta({
+                  toolName,
+                  arguments: args,
+                  effectId:
+                    ctx.effectId,
+                  generation:
+                    ctx.generation,
+                  attempt:
+                    ctx.attempt
+                })
+              : this.options.callMeta;
+
+          // The reserved key is always derived from the durable
+          // Component effect. It is stable across retries and unique
+          // across distinct Component invocations. Static connection
+          // metadata must not accidentally collapse unrelated starts.
+          const callMeta = {
+            ...configuredMeta,
+            "io.uair/idempotency-key":
+              ctx.effectId
+          };
+
           const result =
             await this.client
               .callTool(
                 {
                   name: toolName,
                   arguments: args,
-                  ...(this.options.callMeta
-                    ? {
-                        _meta:
-                          this.options.callMeta
-                      }
-                    : {})
+                  _meta: callMeta
                 },
                 {
                   signal:
