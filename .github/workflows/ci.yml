@@ -21,4 +21,5 @@ jobs:
             npm install --ignore-scripts --no-audit --no-fund
           fi
       - run: npm run build
+      - run: npm run check:mcp-invocation-sqlite
       - run: npm run release:preflight

@@ -54,6 +54,14 @@ run(
 );
 
 run(
+  "npm",
+  [
+    "run",
+    "test:mcp-invocation-postgres"
+  ]
+);
+
+run(
   "node",
   [
     "scripts/check-postgres-multiprocess.mjs"

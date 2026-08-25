@@ -21,6 +21,12 @@ const adapter =
     "utf8"
   );
 
+const mcpAdapter =
+  await readFile(
+    "packages/mcp/src/postgres-invocation-store.ts",
+    "utf8"
+  );
+
 assert.match(
   workflow,
   /image:\s*postgres:16/
@@ -34,6 +40,11 @@ assert.match(
 assert.match(
   workflow,
   /examples\/postgres-integration\/index\.mjs/
+);
+
+assert.match(
+  workflow,
+  /test:mcp-invocation-postgres/
 );
 
 for (
@@ -60,6 +71,21 @@ for (
 assert.match(
   adapter,
   /FOR UPDATE SKIP LOCKED/
+);
+
+assert.match(
+  mcpAdapter,
+  /pg_advisory_xact_lock/
+);
+
+assert.match(
+  mcpAdapter,
+  /ON CONFLICT DO NOTHING/
+);
+
+assert.match(
+  mcpAdapter,
+  /FOR UPDATE/
 );
 
 assert.match(

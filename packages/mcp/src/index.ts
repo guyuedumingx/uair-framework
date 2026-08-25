@@ -34,6 +34,24 @@ export {
 } from "./invocation-store.js";
 
 export {
+  SQLITE_MCP_INVOCATION_SCHEMA_VERSION,
+  SqliteMcpInvocationSchemaTooNewError,
+  SqliteMcpInvocationStore
+} from "./sqlite-invocation-store.js";
+
+export {
+  POSTGRES_MCP_INVOCATION_SCHEMA_VERSION,
+  PostgresMcpInvocationSchemaTooNewError,
+  PostgresMcpInvocationStore
+} from "./postgres-invocation-store.js";
+
+export type {
+  PostgresMcpInvocationClient,
+  PostgresMcpInvocationPool,
+  PostgresMcpQueryResult
+} from "./postgres-invocation-store.js";
+
+export {
   McpExecutionAccessDeniedError,
   McpExecutionNotCancellableError,
   McpInvocationInProgressError,

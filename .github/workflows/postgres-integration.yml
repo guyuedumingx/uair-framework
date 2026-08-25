@@ -34,9 +34,8 @@ jobs:
         with:
           node-version: "22"
 
-      # Deliberately install only the dependencies needed by this gate.
-      # This avoids coupling the database integration test to optional
-      # ecosystem adapters/packages.
+      # Deliberately install only the dependencies needed by the live
+      # Runtime and MCP database gates, not the full optional ecosystem.
       - name: Install integration toolchain
         run: |
           mkdir -p .ci
@@ -46,21 +45,34 @@ jobs:
             --ignore-scripts \
             typescript@^5.9.2 \
             @types/node@^24.3.0 \
-            pg@^8.13.0
+            pg@^8.13.0 \
+            ajv@^8.20.0 \
+            @modelcontextprotocol/client@^2.0.0 \
+            @modelcontextprotocol/server@^2.0.0
 
       - name: Wire local UAIR packages
         run: |
           mkdir -p node_modules/@uair
           ln -s "$GITHUB_WORKSPACE/packages/core" node_modules/@uair/core
+          ln -s "$GITHUB_WORKSPACE/packages/capability" node_modules/@uair/capability
+          ln -s "$GITHUB_WORKSPACE/packages/mcp" node_modules/@uair/mcp
           ln -s "$GITHUB_WORKSPACE/packages/postgres" node_modules/@uair/postgres
           ln -s "$GITHUB_WORKSPACE/.ci/node_modules/@types" node_modules/@types
+          ln -s "$GITHUB_WORKSPACE/.ci/node_modules/@modelcontextprotocol" node_modules/@modelcontextprotocol
+          ln -s "$GITHUB_WORKSPACE/.ci/node_modules/ajv" node_modules/ajv
           ln -s "$GITHUB_WORKSPACE/.ci/node_modules/pg" node_modules/pg
 
-      - name: Build core and PostgreSQL adapter
+      - name: Build database-gated packages
         run: |
           .ci/node_modules/.bin/tsc -p packages/core/tsconfig.json
+          .ci/node_modules/.bin/tsc -p packages/capability/tsconfig.json
+          .ci/node_modules/.bin/tsc -p packages/mcp/tsconfig.json
           .ci/node_modules/.bin/tsc -p packages/postgres/tsconfig.json
 
       - name: Run real PostgreSQL multi-connection gate
         run: |
           node examples/postgres-integration/index.mjs
+
+      - name: Run real PostgreSQL MCP invocation gate
+        run: |
+          npm run test:mcp-invocation-postgres

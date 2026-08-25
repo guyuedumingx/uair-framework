@@ -1,4 +1,4 @@
-# UAIR Production Support Profiles — v0.54
+# UAIR Production Support Profiles — v0.68
 
 UAIR packages expose several storage/queue implementations, but they do not
 have the same support level.
@@ -13,6 +13,9 @@ have the same support level.
 | `SqliteReliableWorkerQueue` | single-node durable queue | candidate production backend |
 | `PostgresRuntimeState` | multi-process/shared durable runtime | candidate production backend; live DB gate required |
 | `PostgresReliableWorkerQueue` | multi-process reliable queue | candidate production backend; live DB gate required |
+| `JsonFileMcpInvocationStore` | examples and local MCP hosts | **not production** |
+| `SqliteMcpInvocationStore` | single-node / embedded MCP host | candidate production backend |
+| `PostgresMcpInvocationStore` | multi-process/shared MCP host | candidate production backend; live DB gate required |
 
 This avoids solving production corruption/recovery by making the development
 JSON adapter increasingly complicated.
@@ -82,9 +85,8 @@ combined execution + suspension atomicity
 newer Runtime storage schema refusal
 ```
 
-The current build container has no PostgreSQL server, so those three tests are
-**prepared but not locally executed**. They are mandatory on macOS/Docker or CI
-before a production release.
+These tests require a real PostgreSQL server and are mandatory through Docker
+or CI before a production release.
 
 ## Runtime storage schema compatibility
 
@@ -144,3 +146,27 @@ decoded/opened safely.
 
 JSON storage has no production recovery guarantee and must not be used as a
 production source of truth.
+
+## MCP Invocation durability profile
+
+MCP Invocation state is an outer Runtime Host concern, separate from Core
+History. The SQLite and PostgreSQL stores use the same
+`claimed → bound → complete` contract and keep idempotency identity scoped by
+principal, tool and idempotency key. Request hashes and authenticated access
+scope are immutable after the first claim.
+
+The database gates verify:
+
+```text
+100 concurrent claims → one winner
+multi-process claims → one winner
+lease expiry → fenced recovery
+stale lease token → rejected write
+Execution ID → unique reverse lookup
+different request/scope reuse → conflict
+newer Invocation schema → refuse startup
+```
+
+These guarantees prevent duplicate Workflow Execution creation. They do not
+replace downstream Component idempotency: external effects must still use the
+stable Component `effectId` as their idempotency key.
