@@ -46,6 +46,110 @@ export type AgentAction =
       value: unknown;
     };
 
+export type AgentActionParser<
+  Input = unknown
+> = (
+  value: Input
+) => AgentAction;
+
+const isRecord = (
+  value: unknown
+): value is Record<
+  string,
+  unknown
+> =>
+  typeof value ===
+    "object" &&
+  value !== null &&
+  !Array.isArray(
+    value
+  );
+
+/**
+ * Validate and normalize an untrusted model decision.
+ *
+ * Model output is data, even when AgentModel is statically typed. This parser
+ * keeps JavaScript callers, provider adapters and unsafe casts from reaching
+ * tool execution with a malformed action.
+ */
+export const parseAgentAction:
+  AgentActionParser =
+  value => {
+    if (!isRecord(value)) {
+      throw new TypeError(
+        "Agent action must be an object"
+      );
+    }
+
+    if (
+      value.type ===
+        "tool"
+    ) {
+      if (
+        typeof value.tool !==
+          "string" ||
+        value.tool.length ===
+          0
+      ) {
+        throw new TypeError(
+          "Agent tool action.tool must be a non-empty string"
+        );
+      }
+
+      if (
+        value.args !==
+          undefined &&
+        !isRecord(
+          value.args
+        )
+      ) {
+        throw new TypeError(
+          "Agent tool action.args must be an object when provided"
+        );
+      }
+
+      return {
+        type:
+          "tool",
+        tool:
+          value.tool,
+        ...(
+          value.args ===
+            undefined
+            ? {}
+            : {
+                args:
+                  value.args
+              }
+        )
+      };
+    }
+
+    if (
+      value.type ===
+        "final"
+    ) {
+      if (
+        !("value" in value)
+      ) {
+        throw new TypeError(
+          "Agent final action must include value"
+        );
+      }
+
+      return {
+        type:
+          "final",
+        value:
+          value.value
+      };
+    }
+
+    throw new TypeError(
+      'Agent action.type must be "tool" or "final"'
+    );
+  };
+
 export type AgentTurnContext = {
   input: unknown;
   steps: Array<{
@@ -61,15 +165,36 @@ export type AgentTurnContext = {
     }>;
 };
 
-export interface AgentModel {
+export interface AgentModel<
+  Decision = AgentAction
+> {
+  /**
+   * Decide the next action.
+   *
+   * Any nondeterministic provider I/O used here must be performed through a
+   * UAIR Component. jsonAgentModel() follows that contract by accepting an LLM
+   * Component rather than a raw provider callback.
+   */
   decide(
     context:
       AgentTurnContext
-  ): Promise<AgentAction>;
+  ): Promise<Decision>;
 }
 
-export type AgentOptions = {
+export type AgentOptions<
+  Decision = AgentAction
+> = {
   maxSteps?: number;
+  /**
+   * Optional integration with Zod/Valibot/ArkType/etc. The returned value is
+   * still checked by parseAgentAction(), so custom parsers cannot bypass the
+   * public AgentAction contract. The parser must be deterministic and free of
+   * external side effects because it may run again during replay.
+   */
+  parseAction?:
+    AgentActionParser<
+      Decision
+    >;
 };
 
 /**
@@ -79,12 +204,19 @@ export type AgentOptions = {
  * The Agent loop itself uses normal TypeScript control flow and
  * invokes other Components for tool calls.
  */
-export function agent(
+export function agent<
+  Decision = AgentAction
+>(
   name: string,
-  model: AgentModel,
+  model:
+    AgentModel<
+      Decision
+    >,
   tools: AgentTool[],
   options:
-    AgentOptions = {}
+    AgentOptions<
+      Decision
+    > = {}
 ) {
   const toolMap =
     new Map(
@@ -116,7 +248,7 @@ export function agent(
         index < maxSteps;
         index += 1
       ) {
-        const action =
+        const candidate =
           await model.decide({
             input,
             steps,
@@ -132,6 +264,15 @@ export function agent(
                 })
               )
           });
+
+        const action =
+          parseAgentAction(
+            options.parseAction
+              ? options.parseAction(
+                  candidate
+                )
+              : candidate
+          );
 
         if (
           action.type ===

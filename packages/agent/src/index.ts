@@ -1,6 +1,7 @@
 export {
   agent,
-  asAgentTool
+  asAgentTool,
+  parseAgentAction
 } from "./agent.js";
 
 export {
@@ -11,6 +12,7 @@ export {
 export type {
   AgentTool,
   AgentAction,
+  AgentActionParser,
   AgentTurnContext,
   AgentModel,
   AgentOptions
