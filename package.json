@@ -53,6 +53,8 @@
     "check:mcp-client": "node scripts/check-mcp-client.mjs",
     "check:mcp-runtime-types": "node scripts/check-mcp-runtime-types.mjs",
     "check:mcp-invocation-store": "node scripts/check-mcp-invocation-store.mjs",
+    "check:mcp-invocation-sqlite": "node scripts/check-mcp-transactional-invocations.mjs sqlite",
+    "test:mcp-invocation-postgres": "node scripts/check-mcp-transactional-invocations.mjs postgres",
     "check:mcp-runtime-host": "node scripts/check-mcp-runtime-host.mjs",
     "check:mcp-server": "node scripts/check-mcp-server.mjs",
     "check:mcp-multi-source": "node scripts/check-mcp-multi-source.mjs",

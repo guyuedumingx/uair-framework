@@ -247,6 +247,14 @@ function renewRecord(
   };
 }
 
+export {
+  assertCompatibleRequest as internalAssertCompatibleRequest,
+  assertLease as internalAssertLease,
+  assertLeaseDuration as internalAssertLeaseDuration,
+  claimRecord as internalClaimRecord,
+  renewRecord as internalRenewRecord
+};
+
 export class InMemoryMcpInvocationStore
 implements McpInvocationStore {
   private readonly records =

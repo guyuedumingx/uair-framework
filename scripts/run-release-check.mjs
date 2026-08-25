@@ -55,6 +55,14 @@ run(
   "npm",
   [
     "run",
+    "check:mcp-invocation-sqlite"
+  ]
+);
+
+run(
+  "npm",
+  [
+    "run",
     "release:preflight"
   ]
 );
